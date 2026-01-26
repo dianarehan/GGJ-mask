@@ -200,23 +200,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &439958422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439958418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb93481eb0106814aac3e50062c5d5e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 5
-  dashSpeed: 15
-  dashDuration: 0.2
-  dashCooldown: 0.5
-  rb: {fileID: 439958421}
 --- !u!61 &439958423
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2109,9 +2092,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3944599640377770395, guid: 722f5b43f055dfb4aaea85cec9e4e07f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 439958423}
-    - targetCorrespondingSourceObject: {fileID: 3944599640377770395, guid: 722f5b43f055dfb4aaea85cec9e4e07f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 439958422}
     - targetCorrespondingSourceObject: {fileID: 3944599640377770395, guid: 722f5b43f055dfb4aaea85cec9e4e07f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 439958421}
