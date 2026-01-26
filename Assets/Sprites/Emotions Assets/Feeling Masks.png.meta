@@ -1,0 +1,1209 @@
+fileFormatVersion: 2
+guid: ec2ae777e518ed646b8d10113e36ea52
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4985852731600364974
+    second: Feeling Masks_0
+  - first:
+      213: 1680360462572412933
+    second: Feeling Masks_1
+  - first:
+      213: 5187026161090795347
+    second: Feeling Masks_2
+  - first:
+      213: 567085958447678831
+    second: Feeling Masks_3
+  - first:
+      213: -4119353853050220753
+    second: Feeling Masks_4
+  - first:
+      213: -1658113424219181119
+    second: Feeling Masks_5
+  - first:
+      213: -8862045484183472641
+    second: Feeling Masks_6
+  - first:
+      213: -1033910917600004071
+    second: Feeling Masks_7
+  - first:
+      213: 455979359700930752
+    second: Feeling Masks_8
+  - first:
+      213: -2045269566763021660
+    second: Feeling Masks_9
+  - first:
+      213: -4694216689740173103
+    second: Feeling Masks_10
+  - first:
+      213: -7088579626769446565
+    second: Feeling Masks_11
+  - first:
+      213: -3523048247851989996
+    second: Feeling Masks_12
+  - first:
+      213: 8937815212638148876
+    second: Feeling Masks_13
+  - first:
+      213: 24926572506997687
+    second: Feeling Masks_14
+  - first:
+      213: 4741764902630581409
+    second: Feeling Masks_15
+  - first:
+      213: 5028940965608178198
+    second: Feeling Masks_16
+  - first:
+      213: -3554778745415074235
+    second: Feeling Masks_17
+  - first:
+      213: -5971288414674929794
+    second: Feeling Masks_18
+  - first:
+      213: -2162343958135792425
+    second: Feeling Masks_19
+  - first:
+      213: -7645190030945762416
+    second: Feeling Masks_20
+  - first:
+      213: 8221578790915087614
+    second: Feeling Masks_21
+  - first:
+      213: -5155239457121350434
+    second: Feeling Masks_22
+  - first:
+      213: 4103798201508005565
+    second: Feeling Masks_23
+  - first:
+      213: -714223797193320740
+    second: Feeling Masks_24
+  - first:
+      213: 4007822651635905657
+    second: Feeling Masks_25
+  - first:
+      213: -8047213208594665124
+    second: Feeling Masks_26
+  - first:
+      213: -1114348513232189246
+    second: Feeling Masks_27
+  - first:
+      213: -8988818810446711378
+    second: Feeling Masks_28
+  - first:
+      213: -5474541308934173194
+    second: Feeling Masks_29
+  - first:
+      213: -1315503046945310388
+    second: Feeling Masks_30
+  - first:
+      213: -1480083985209023912
+    second: Feeling Masks_31
+  - first:
+      213: -7738203982707940735
+    second: Feeling Masks_32
+  - first:
+      213: -1295931745200056632
+    second: Feeling Masks_33
+  - first:
+      213: -5895669240157691634
+    second: Feeling Masks_34
+  - first:
+      213: -8692258600874755083
+    second: Feeling Masks_35
+  - first:
+      213: 7255526865024130086
+    second: Feeling Masks_36
+  - first:
+      213: -4336838356913976045
+    second: Feeling Masks_37
+  - first:
+      213: 1572488593370919617
+    second: Feeling Masks_38
+  - first:
+      213: -2073795053494420000
+    second: Feeling Masks_39
+  - first:
+      213: -470500642991479081
+    second: Feeling Masks_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Feeling Masks_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 392
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25a9c865b51becab0800000000000000
+      internalID: -4985852731600364974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 392
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5006d3210f6d15710800000000000000
+      internalID: 1680360462572412933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_2
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 392
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 357997cbfc40cf740800000000000000
+      internalID: 5187026161090795347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_3
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 392
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f65c266bca1bed700800000000000000
+      internalID: 567085958447678831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_4
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 392
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2f0ec4fe7d15d6c0800000000000000
+      internalID: -4119353853050220753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_5
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 392
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cfeb1030a23df8e0800000000000000
+      internalID: -1658113424219181119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_6
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 328
+        width: 46
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff5b3e3d590b30580800000000000000
+      internalID: -8862045484183472641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_7
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 328
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 918bd039f7fc6a1f0800000000000000
+      internalID: -1033910917600004071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_8
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 328
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c052efcfc6f35600800000000000000
+      internalID: 455979359700930752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_9
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 328
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4aa4c235a2ebd93e0800000000000000
+      internalID: -2045269566763021660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_10
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 328
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d0b35daacacadeb0800000000000000
+      internalID: -4694216689740173103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_11
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 328
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b590658e26e40ad90800000000000000
+      internalID: -7088579626769446565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_12
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 264
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4144834d84e9b1fc0800000000000000
+      internalID: -3523048247851989996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_13
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 264
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c091161d49f790c70800000000000000
+      internalID: 8937815212638148876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_14
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 264
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b36fbbe59e885000800000000000000
+      internalID: 24926572506997687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_15
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 264
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a4e5b55e022ec140800000000000000
+      internalID: 4741764902630581409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_16
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 264
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6124c7be9236ac540800000000000000
+      internalID: 5028940965608178198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_17
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 264
+        width: 46
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54efc68a093eaaec0800000000000000
+      internalID: -3554778745415074235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_18
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 200
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7735e7f2d8b12da0800000000000000
+      internalID: -5971288414674929794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_19
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 200
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dc9a1d60afcdf1e0800000000000000
+      internalID: -2162343958135792425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_20
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 200
+        width: 60
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 093ce1d3c24d6e590800000000000000
+      internalID: -7645190030945762416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_21
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 200
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efc116db95ae81270800000000000000
+      internalID: 8221578790915087614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_22
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 200
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc44320709e478b0800000000000000
+      internalID: -5155239457121350434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_23
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 200
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db685cea8be93f830800000000000000
+      internalID: 4103798201508005565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_24
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 136
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd659269d319616f0800000000000000
+      internalID: -714223797193320740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_25
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 136
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 974b581a775ae9730800000000000000
+      internalID: 4007822651635905657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_26
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 136
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5132e5093e825090800000000000000
+      internalID: -8047213208594665124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_27
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 136
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c88fc86ee90980f0800000000000000
+      internalID: -1114348513232189246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_28
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 136
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea579fcaaec414380800000000000000
+      internalID: -8988818810446711378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_29
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 136
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fdc6c45fa58604b0800000000000000
+      internalID: -5474541308934173194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_30
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 72
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4971e9d2f46ebde0800000000000000
+      internalID: -1315503046945310388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_31
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 72
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8522fdf057fa57be0800000000000000
+      internalID: -1480083985209023912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_32
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 72
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1822e2bf9706c9490800000000000000
+      internalID: -7738203982707940735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_33
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 72
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c6d232a1fce30ee0800000000000000
+      internalID: -1295931745200056632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_34
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 72
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e01243b00106e2ea0800000000000000
+      internalID: -5895669240157691634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_35
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 66
+        width: 60
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fbb6072bd4ee5780800000000000000
+      internalID: -8692258600874755083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_36
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 8
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62c11180e3fc0b460800000000000000
+      internalID: 7255526865024130086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_37
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 8
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31d8adfed7470d3c0800000000000000
+      internalID: -4336838356913976045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_38
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 8
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c23a355b0a92d510800000000000000
+      internalID: 1572488593370919617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_39
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 8
+        width: 46
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0edb083e2666833e0800000000000000
+      internalID: -2073795053494420000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Feeling Masks_40
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 8
+        width: 60
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d666e378227879f0800000000000000
+      internalID: -470500642991479081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Feeling Masks_0: -4985852731600364974
+      Feeling Masks_1: 1680360462572412933
+      Feeling Masks_10: -4694216689740173103
+      Feeling Masks_11: -7088579626769446565
+      Feeling Masks_12: -3523048247851989996
+      Feeling Masks_13: 8937815212638148876
+      Feeling Masks_14: 24926572506997687
+      Feeling Masks_15: 4741764902630581409
+      Feeling Masks_16: 5028940965608178198
+      Feeling Masks_17: -3554778745415074235
+      Feeling Masks_18: -5971288414674929794
+      Feeling Masks_19: -2162343958135792425
+      Feeling Masks_2: 5187026161090795347
+      Feeling Masks_20: -7645190030945762416
+      Feeling Masks_21: 8221578790915087614
+      Feeling Masks_22: -5155239457121350434
+      Feeling Masks_23: 4103798201508005565
+      Feeling Masks_24: -714223797193320740
+      Feeling Masks_25: 4007822651635905657
+      Feeling Masks_26: -8047213208594665124
+      Feeling Masks_27: -1114348513232189246
+      Feeling Masks_28: -8988818810446711378
+      Feeling Masks_29: -5474541308934173194
+      Feeling Masks_3: 567085958447678831
+      Feeling Masks_30: -1315503046945310388
+      Feeling Masks_31: -1480083985209023912
+      Feeling Masks_32: -7738203982707940735
+      Feeling Masks_33: -1295931745200056632
+      Feeling Masks_34: -5895669240157691634
+      Feeling Masks_35: -8692258600874755083
+      Feeling Masks_36: 7255526865024130086
+      Feeling Masks_37: -4336838356913976045
+      Feeling Masks_38: 1572488593370919617
+      Feeling Masks_39: -2073795053494420000
+      Feeling Masks_4: -4119353853050220753
+      Feeling Masks_40: -470500642991479081
+      Feeling Masks_5: -1658113424219181119
+      Feeling Masks_6: -8862045484183472641
+      Feeling Masks_7: -1033910917600004071
+      Feeling Masks_8: 455979359700930752
+      Feeling Masks_9: -2045269566763021660
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
