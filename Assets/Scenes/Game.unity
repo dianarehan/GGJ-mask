@@ -158,6 +158,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2470190234937092936, guid: 938abd15b01abb54499722eac25e4022, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 587078232}
     - target: {fileID: 3997527481009757149, guid: 938abd15b01abb54499722eac25e4022, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -780,6 +784,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &587078232 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5443536375185108462, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+  m_PrefabInstance: {fileID: 1143262737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,7 +826,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000d5a2d778
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
