@@ -22,6 +22,9 @@ public class ShipMovement : MonoBehaviour
     public float deceleration = 10f;
     [Range(0, 1)] public float driftFactor = 0.9f;
 
+    [Header("Mask Ref")]
+    public Mask mask;
+
     [Header("Dash Settings (Chaos)")]
     public float dashForce = 40f;      // Instant explosion of speed
     public float dashDuration = 3f;    // How long you lose control
@@ -157,6 +160,7 @@ public class ShipMovement : MonoBehaviour
 
             // 4. LAUNCH
             rb.AddRelativeForce(Vector2.up * dashForce, ForceMode2D.Impulse);
+            mask.MaskOn(dashDuration);
         }
         else if (newState == ShipState.Normal)
         {
