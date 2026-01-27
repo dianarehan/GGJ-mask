@@ -181,6 +181,9 @@ public class LevelManager : MonoBehaviour
 
         Debug.Log($"Level {currentLevelIndex + 1} Complete!");
         
+        // Trigger Artifact Fill (fill piece for this level)
+        levelUI?.AnimateArtifactFill(currentLevelIndex, levels.Count);
+
         // check if this was the last level
         if (currentLevelIndex >= levels.Count - 1)
         {
