@@ -1,142 +1,69 @@
 using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
-public class MaskCarController : MonoBehaviour
+public class ShipMovement : MonoBehaviour
 {
-    [Header("--- Normal Car Settings ---")]
-    [Tooltip("How fast the car accelerates.")]
-    public float acceleration = 10f;
-    [Tooltip("Maximum speed in normal mode.")]
-    public float maxSpeed = 15f;
-    [Tooltip("How fast the car turns.")]
-    public float turnSpeed = 150f;
-    [Tooltip("0 = Ice (Slide), 1 = Sticky (Go Kart). Recommended: 0.9")]
+    [Header("Engine Settings")]
+    public float acceleration = 20f;
+    public float maxSpeed = 10f;
+    public float turnSpeed = 200f;
+
+    [Header("Handling Settings")]
+    [Tooltip("How fast you stop when releasing W.")]
+    public float deceleration = 10f;
+    [Tooltip("1 = Sharp Turns (Car). 0 = Space Drift. Recommended: 0.9")]
     [Range(0, 1)] public float driftFactor = 0.9f;
-    [Tooltip("Drag when not accelerating (Natural slow down).")]
-    public float drag = 3f;
 
-    [Header("--- Mask Dash Settings ---")]
-    [Tooltip("The explosive speed when Space is pressed.")]
-    public float dashForce = 50f;
-    [Tooltip("How long the uncontrolled dash lasts.")]
-    public float dashDuration = 3f;
-    [Tooltip("Drag during dash (0 means you don't slow down at all).")]
-    public float dashDrag = 0f;
-
-    [Header("--- Physics Materials ---")]
-    [Tooltip("Assign a material with Friction: 0.4, Bounciness: 0")]
-    public PhysicsMaterial2D normalMat;
-    [Tooltip("Assign a material with Friction: 0, Bounciness: 1")]
-    public PhysicsMaterial2D bouncyMat;
-
-    // Internal State
     private Rigidbody2D rb;
-    private Collider2D col;
-    private float moveInput;
     private float turnInput;
-    private bool isDashing = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<Collider2D>();
-        rb.gravityScale = 0; // Ensure no gravity
+        rb.gravityScale = 0f;
+        rb.linearDamping = 0f;
+        rb.angularDamping = 2f;
     }
 
     void Update()
     {
-        // 1. INPUT HANDLING
-        if (!isDashing)
-        {
-            moveInput = Input.GetKey(KeyCode.W) ? 1f : 0f;
-            turnInput = Input.GetAxisRaw("Horizontal"); // A = -1, D = 1
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartCoroutine(DashRoutine());
-            }
-        }
-        else
-        {
-            // Lock inputs during dash
-            moveInput = 0;
-            turnInput = 0;
-        }
+        turnInput = Input.GetAxisRaw("Horizontal");
     }
 
     void FixedUpdate()
     {
-        if (isDashing)
+        // 1. STEERING
+        if (turnInput != 0)
         {
-            // In dash mode, we just let physics take the wheel.
-            // But we ensure the car faces the direction it is flying (optional, looks better)
-            if (rb.linearVelocity.sqrMagnitude > 1f)
-            {
-                float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg - 90f;
-                rb.rotation = angle;
-            }
-            return;
+            float forwardEffect = rb.linearVelocity.magnitude / maxSpeed;
+            forwardEffect = Mathf.Clamp(forwardEffect, 0.5f, 1f);
+            float newAngle = rb.rotation - (turnInput * turnSpeed * forwardEffect * Time.fixedDeltaTime);
+            rb.MoveRotation(newAngle);
         }
 
-        // --- NORMAL CAR PHYSICS ---
-
-        // 2. Kill Orthogonal Velocity (The "Car" feel)
-        // This removes sideways sliding. If driftFactor is 1, it kills ALL sliding.
+        // 2. DRIFT CORRECTION (The Fix)
+        // We break velocity into "Forward Speed" and "Sideways Speed"
         Vector2 forwardVelocity = transform.up * Vector2.Dot(rb.linearVelocity, transform.up);
         Vector2 rightVelocity = transform.right * Vector2.Dot(rb.linearVelocity, transform.right);
-        rb.linearVelocity = forwardVelocity + rightVelocity * (1f - driftFactor); // Apply drift correction
 
-        // 3. Acceleration
-        if (moveInput > 0)
+        // We keep all the Forward Speed, but kill the Sideways Speed based on Drift Factor
+        rb.linearVelocity = forwardVelocity + (rightVelocity * (1f - driftFactor));
+
+        // 3. ACCELERATE
+        if (Input.GetKey(KeyCode.W))
         {
-            // Only add force if under max speed
-            if (rb.linearVelocity.magnitude < maxSpeed)
-            {
-                rb.AddRelativeForce(Vector2.up * acceleration, ForceMode2D.Force);
-            }
-            rb.linearDamping = 0; // Remove drag while gas is pressed
+            rb.AddRelativeForce(Vector2.up * acceleration);
         }
         else
         {
-            rb.linearDamping = drag; // Apply drag when coasting
+            // 4. BRAKE
+            rb.linearVelocity = Vector2.MoveTowards(rb.linearVelocity, Vector2.zero, deceleration * Time.fixedDeltaTime);
         }
 
-        // 4. Steering
-        // Only allow steering if the car is actually moving (Realism)
-        float minSpeedToTurn = 0.5f;
-        if (rb.linearVelocity.magnitude > minSpeedToTurn)
+        // 5. SPEED LIMITER
+        if (rb.linearVelocity.magnitude > maxSpeed)
         {
-            rb.rotation -= turnInput * turnSpeed * Time.fixedDeltaTime;
+            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
         }
-    }
-
-    IEnumerator DashRoutine()
-    {
-        isDashing = true;
-
-        // ENTER DASH: Swap to Bouncy Physics
-        col.sharedMaterial = bouncyMat;
-        col.enabled = false; col.enabled = true; // Refresh collider
-
-        rb.linearDamping = dashDrag;
-
-        // Launch Force
-        rb.AddRelativeForce(Vector2.up * dashForce, ForceMode2D.Impulse);
-
-        // TODO: Enable Mask UI Here
-
-        yield return new WaitForSeconds(dashDuration);
-
-        // EXIT DASH: Swap to Normal Physics
-        col.sharedMaterial = normalMat;
-        col.enabled = false; col.enabled = true; // Refresh collider
-
-        rb.linearDamping = drag;
-
-        // TODO: Disable Mask UI Here
-
-        isDashing = false;
     }
 }
