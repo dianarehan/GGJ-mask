@@ -12,6 +12,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected Transform playerTransform;
     protected bool isAlive = true;
+    public static event System.Action OnEnemyDeath;
 
     protected virtual void Awake()
     {
@@ -56,6 +57,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Die()
     {
         isAlive = false;
+        OnEnemyDeath?.Invoke();
         // Add death effects here (particles, sound, etc.)
         Destroy(gameObject);
     }

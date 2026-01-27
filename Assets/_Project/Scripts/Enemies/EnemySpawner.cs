@@ -99,6 +99,8 @@ public class EnemySpawner : MonoBehaviour
             spawnTimer = currentSpawnRate;
         }
 
+        // Logic handled by LevelManager now
+        /*
         // Update wave timer
         waveTimer -= Time.deltaTime;
         if (waveTimer <= 0f)
@@ -117,6 +119,7 @@ public class EnemySpawner : MonoBehaviour
                 difficultyTimer = 0f;
             }
         }
+        */
     }
 
     private void SpawnEnemy()
@@ -136,18 +139,14 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(TrackEnemy(enemy));
     }
 
-    private void SpawnWave()
+    // Called by LevelManager to configure the spawner for a new level
+    public void SetLevelData(List<EnemySpawnData> newEnemyTypes, int newMaxEnemies, float spawnInterval)
     {
-        currentWave++;
-        Debug.Log($"Wave {currentWave} starting!");
-
-        for (int i = 0; i < enemiesPerWave; i++)
-        {
-            if (currentEnemyCount < maxEnemies)
-            {
-                SpawnEnemy();
-            }
-        }
+        enemyTypes = new List<EnemySpawnData>(newEnemyTypes);
+        maxEnemies = newMaxEnemies;
+        currentSpawnRate = spawnInterval;
+        spawnTimer = 0f; // Immediate spawn
+        Debug.Log($"EnemySpawner configured: {enemyTypes.Count} types, Max: {maxEnemies}, Rate: {currentSpawnRate}");
     }
 
     private GameObject GetRandomEnemyPrefab()
@@ -174,6 +173,8 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector2? GetValidSpawnPosition()
     {
+        if (player == null) return null;
+        
         Vector2 playerPos = player.transform.position;
         const int maxAttempts = 50;
 
@@ -206,13 +207,6 @@ public class EnemySpawner : MonoBehaviour
         currentEnemyCount--;
     }
 
-    private void IncreaseDifficulty()
-    {
-        currentSpawnRate = Mathf.Max(minimumSpawnTime, currentSpawnRate - spawnRateDecrease);
-        enemiesPerWave++;
-        Debug.Log($"Difficulty increased! Spawn rate: {currentSpawnRate:F1}s, Enemies per wave: {enemiesPerWave}");
-    }
-
     private void OnDrawGizmosSelected()
     {
         // Draw spawn area
@@ -234,14 +228,13 @@ public class EnemySpawner : MonoBehaviour
 
     public void ClearAllEnemies()
     {
-        foreach (var enemy in FindObjectsByType<EnemyBase>(FindObjectsSortMode.None))
+        // Find all enemies including inactive ones if necessary, but usually active only
+        var enemies = FindObjectsByType<EnemyBase>(FindObjectsSortMode.None);
+        foreach (var enemy in enemies)
         {
-            Destroy(enemy.gameObject);
+            if (enemy != null) Destroy(enemy.gameObject);
         }
         currentEnemyCount = 0;
     }
-
-    public int CurrentWave => currentWave;
-    public int EnemyCount => currentEnemyCount;
 }
 
