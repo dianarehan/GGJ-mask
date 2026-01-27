@@ -1418,10 +1418,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4380991122151212453, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
-      propertyPath: m_FalloffIntensity
-      value: 0.361
-      objectReference: {fileID: 0}
     - target: {fileID: 5443536375185108462, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.73411
