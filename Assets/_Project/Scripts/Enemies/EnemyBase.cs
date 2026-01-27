@@ -102,7 +102,7 @@ public abstract class EnemyBase : MonoBehaviour
             {
                 // Ship dashed into us - we die
                 CollisionEffects.Instance?.PlayEnemyKill(transform.position);
-                TakeDamage(999f);
+                TakeDamage(1f);
             }
             else
             {
