@@ -1,7 +1,13 @@
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
+    [Header("Health Settings")]
+    [SerializeField] private int maxHealth = 3;
+    [SerializeField] private float invincibilityDuration = 1.5f;
+    [SerializeField] private float damageFlashSpeed = 10f;
+
     [Header("Dash Settings")]
     [SerializeField] private float dashSpeed = 15f;      // Speed during dash
     [SerializeField] private float dashDuration = 0.2f;  // How long the dash lasts
@@ -14,6 +20,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float trailEndWidth = 0f;
     [SerializeField] private Color trailStartColor = new Color(0f, 1f, 1f, 1f);  // Cyan
     [SerializeField] private Color trailEndColor = new Color(0f, 1f, 1f, 0f);    // Transparent cyan
+
+    // Events for UI/Game Manager
+    public event Action<int, int> OnHealthChanged; // (currentHealth, maxHealth)
+    public event Action OnPlayerDeath;
+
+    // Health state
+    private int currentHealth;
+    private bool isInvincible = false;
+    private float invincibilityTimer = 0f;
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
 
     // Current facing direction (supports 8 directions now)
     private Vector2 facingVector = Vector2.up;
@@ -34,6 +51,15 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Player requires a Rigidbody2D component!");
         }
+
+        // Initialize health
+        currentHealth = maxHealth;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
         SetupTrailRenderer();
     }
@@ -64,6 +90,7 @@ public class Player : MonoBehaviour
         HandleRotationInput();
         HandleDashInput();
         UpdateTimers();
+        UpdateInvincibility();
     }
 
     void FixedUpdate()
@@ -115,7 +142,7 @@ public class Player : MonoBehaviour
     private void HandleDashInput()
     {
         // Check for dash input (X key) and ensure not on cooldown
-        if (Input.GetKeyDown(KeyCode.X) && !isDashing && cooldownTimer <= 0f)
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing && cooldownTimer <= 0f)
         {
             StartDash();
         }
@@ -173,7 +200,68 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void UpdateInvincibility()
+    {
+        if (!isInvincible) return;
+
+        invincibilityTimer -= Time.deltaTime;
+
+        // Flash effect - oscillate between visible and semi-transparent
+        if (spriteRenderer != null)
+        {
+            float alpha = Mathf.PingPong(Time.time * damageFlashSpeed, 1f) * 0.5f + 0.5f;
+            spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+        }
+
+        if (invincibilityTimer <= 0f)
+        {
+            isInvincible = false;
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = originalColor;
+            }
+        }
+    }
+
+    public void TakeDamage(int amount = 1)
+    {
+        // Can't take damage while dashing or invincible
+        if (isDashing || isInvincible) return;
+
+        currentHealth -= amount;
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            // Start invincibility frames
+            isInvincible = true;
+            invincibilityTimer = invincibilityDuration;
+            Debug.Log($"Player took damage! Health: {currentHealth}/{maxHealth}");
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player died!");
+        OnPlayerDeath?.Invoke();
+        // You can add death effects, respawn logic, or game over screen here
+        gameObject.SetActive(false);
+    }
+
+    public void Heal(int amount = 1)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+    }
+
     // Public getters for other scripts if needed
     public bool IsDashing => isDashing;
     public Vector2 FacingDirection => facingVector;
+    public int CurrentHealth => currentHealth;
+    public int MaxHealth => maxHealth;
+    public bool IsInvincible => isInvincible;
 }
