@@ -71,7 +71,7 @@ public class WandererEnemy : EnemyBase
         base.OnCollisionEnter2D(collision);
 
         // Then handle wall bouncing
-        if (collision.gameObject.GetComponent<Player>() == null && collision.contacts.Length > 0)
+        if (!collision.gameObject.CompareTag("Player") && collision.contacts.Length > 0)
         {
             Vector2 normal = collision.contacts[0].normal;
             currentDirection = Vector2.Reflect(currentDirection, normal);

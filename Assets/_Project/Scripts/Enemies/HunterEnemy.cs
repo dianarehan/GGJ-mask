@@ -50,7 +50,7 @@ public class HunterEnemy : EnemyBase
 
     protected override void EnemyBehavior()
     {
-        if (player == null) return;
+        if (playerTransform == null) return;
 
         float distanceToPlayer = GetDistanceToPlayer();
         Vector2 direction = GetDirectionToPlayer();

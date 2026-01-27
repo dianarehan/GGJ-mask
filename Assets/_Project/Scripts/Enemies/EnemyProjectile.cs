@@ -34,7 +34,7 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check for player hit
+        // Check for Player hit
         Player player = other.GetComponent<Player>();
         if (player != null)
         {
@@ -49,6 +49,25 @@ public class EnemyProjectile : MonoBehaviour
             // Player hit by projectile - show effect and damage
             CollisionEffects.Instance?.PlayProjectileHit(transform.position);
             player.TakeDamage(damage);
+            Destroy(gameObject);
+            return;
+        }
+
+        // Check for ShipMovement hit
+        ShipMovement ship = other.GetComponent<ShipMovement>();
+        if (ship != null)
+        {
+            if (ship.IsDashing)
+            {
+                // Dashing through projectile - destroy it
+                CollisionEffects.Instance?.PlayEnemyKill(transform.position);
+                Destroy(gameObject);
+                return;
+            }
+
+            // Ship hit by projectile
+            CollisionEffects.Instance?.PlayProjectileHit(transform.position);
+            ship.TakeDamage(damage);
             Destroy(gameObject);
             return;
         }

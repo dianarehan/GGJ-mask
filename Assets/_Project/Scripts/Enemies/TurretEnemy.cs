@@ -47,7 +47,7 @@ public class TurretEnemy : EnemyBase
 
     protected override void EnemyBehavior()
     {
-        if (player == null) return;
+        if (playerTransform == null) return;
 
         float distanceToPlayer = GetDistanceToPlayer();
 

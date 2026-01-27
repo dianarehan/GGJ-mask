@@ -10,7 +10,7 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] protected float damage = 1f;
     [SerializeField] protected SpriteRenderer spriteRenderer;
 
-    protected Player player;
+    protected Transform playerTransform;
     protected bool isAlive = true;
 
     protected virtual void Awake()
@@ -21,11 +21,15 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        // Find the player in the scene
-        player = FindFirstObjectByType<Player>();
-        if (player == null)
+        // Find the player in the scene by tag
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
         {
-            Debug.LogWarning($"{gameObject.name}: No Player found in scene!");
+            playerTransform = playerObj.transform;
+        }
+        else
+        {
+            Debug.LogWarning($"{gameObject.name}: No object with tag 'Player' found in scene!");
         }
     }
 
@@ -59,29 +63,51 @@ public abstract class EnemyBase : MonoBehaviour
     // Works with trigger colliders
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        HandlePlayerCollision(other.GetComponent<Player>());
+        HandlePlayerCollision(other.gameObject);
     }
 
     // Works with non-trigger colliders (for wall collision support)
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        HandlePlayerCollision(collision.gameObject.GetComponent<Player>());
+        HandlePlayerCollision(collision.gameObject);
     }
 
-    private void HandlePlayerCollision(Player hitPlayer)
+    private void HandlePlayerCollision(GameObject hitObject)
     {
-        if (hitPlayer == null) return;
-
-        if (hitPlayer.IsDashing)
+        // Try getting Player component
+        Player hitPlayer = hitObject.GetComponent<Player>();
+        if (hitPlayer != null)
         {
-            // Player dashed into us - we die, show kill effect
-            CollisionEffects.Instance?.PlayEnemyKill(transform.position);
-            TakeDamage(999f);
+            if (hitPlayer.IsDashing)
+            {
+                // Player dashed into us - we die, show kill effect
+                CollisionEffects.Instance?.PlayEnemyKill(transform.position);
+                TakeDamage(999f);
+            }
+            else
+            {
+                // Player walked into us - they take damage
+                OnPlayerContact(hitPlayer);
+            }
+            return;
         }
-        else
+
+        // Try getting ShipMovement component
+        ShipMovement hitShip = hitObject.GetComponent<ShipMovement>();
+        if (hitShip != null)
         {
-            // Player walked into us - they take damage
-            OnPlayerContact(hitPlayer);
+            if (hitShip.IsDashing)
+            {
+                // Ship dashed into us - we die
+                CollisionEffects.Instance?.PlayEnemyKill(transform.position);
+                TakeDamage(999f);
+            }
+            else
+            {
+                // Ship walked into us - they take damage
+                CollisionEffects.Instance?.PlayDamageTaken(transform.position);
+                hitShip.TakeDamage((int)damage);
+            }
         }
     }
 
@@ -93,20 +119,19 @@ public abstract class EnemyBase : MonoBehaviour
     }
 
     /// <summary>
-    /// Gets the direction towards the player
+    /// Gets the direction towards the player (supports both Player and ShipMovement)
     /// </summary>
     protected Vector2 GetDirectionToPlayer()
     {
-        if (player == null) return Vector2.zero;
-        return ((Vector2)player.transform.position - (Vector2)transform.position).normalized;
+        if (playerTransform != null) return (playerTransform.position - transform.position).normalized;
+            
+        return Vector2.zero;
     }
 
-    /// <summary>
-    /// Gets the distance to the player
-    /// </summary>
     protected float GetDistanceToPlayer()
     {
-        if (player == null) return float.MaxValue;
-        return Vector2.Distance(transform.position, player.transform.position);
+        if (playerTransform != null) return Vector2.Distance(transform.position, playerTransform.position);
+        return float.MaxValue;
     }
 }
+

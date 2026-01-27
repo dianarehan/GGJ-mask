@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private bool scaleDifficulty = true;
     [SerializeField] private float difficultyIncreaseInterval = 30f;
 
-    private Player player;
+    private GameObject player;
     private float spawnTimer;
     private float waveTimer;
     private float difficultyTimer;
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        player = FindFirstObjectByType<Player>();
+        player = GameObject.FindGameObjectWithTag("Player");
         currentSpawnRate = timeBetweenSpawns;
         spawnTimer = 0f;
         waveTimer = waveInterval;

@@ -8,7 +8,8 @@ using TMPro;
 public class HealthUI : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Player player;
+    private Player player;  // Legacy reference, kept for Inspector assignment
+    private ShipMovement ship; // Reference to ship movement
     
     [Header("Hearts Display")]
     [SerializeField] private bool useHearts = false;
@@ -28,23 +29,39 @@ public class HealthUI : MonoBehaviour
 
     private void Start()
     {
-        if (player == null)
+        // Find player object by tag
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        
+        if (playerObj != null)
         {
-            player = FindFirstObjectByType<Player>();
-        }
-
-        if (player != null)
-        {
-            player.OnHealthChanged += UpdateHealthDisplay;
-            
-            // Initialize slider
-            if (healthSlider != null)
+            // Try to get Player component
+            player = playerObj.GetComponent<Player>();
+            if (player != null)
             {
-                healthSlider.maxValue = player.MaxHealth;
-                healthSlider.value = player.CurrentHealth;
+                player.OnHealthChanged += UpdateHealthDisplay;
+                // Initialize slider
+                if (healthSlider != null)
+                {
+                    healthSlider.maxValue = player.MaxHealth;
+                    healthSlider.value = player.CurrentHealth;
+                }
+                UpdateHealthDisplay(player.CurrentHealth, player.MaxHealth);
+                return;
             }
-            
-            UpdateHealthDisplay(player.CurrentHealth, player.MaxHealth);
+
+            // Try to get ShipMovement component
+            ship = playerObj.GetComponent<ShipMovement>();
+            if (ship != null)
+            {
+                ship.OnHealthChanged += UpdateHealthDisplay;
+                // Initialize slider
+                if (healthSlider != null)
+                {
+                    healthSlider.maxValue = ship.MaxHealth;
+                    healthSlider.value = ship.CurrentHealth;
+                }
+                UpdateHealthDisplay(ship.CurrentHealth, ship.MaxHealth);
+            }
         }
     }
 
