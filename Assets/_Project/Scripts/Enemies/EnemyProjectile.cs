@@ -40,10 +40,14 @@ public class EnemyProjectile : MonoBehaviour
         {
             if (player.IsDashing)
             {
+                // Dashing through projectile - destroy it, show effect
+                CollisionEffects.Instance?.PlayEnemyKill(transform.position);
                 Destroy(gameObject);
                 return;
             }
 
+            // Player hit by projectile - show effect and damage
+            CollisionEffects.Instance?.PlayProjectileHit(transform.position);
             player.TakeDamage(damage);
             Destroy(gameObject);
             return;

@@ -74,21 +74,21 @@ public abstract class EnemyBase : MonoBehaviour
 
         if (hitPlayer.IsDashing)
         {
-            // Player dashed into us - we die
+            // Player dashed into us - we die, show kill effect
+            CollisionEffects.Instance?.PlayEnemyKill(transform.position);
             TakeDamage(999f);
-            Debug.Log("Player dashed into enemy");
         }
         else
         {
             // Player walked into us - they take damage
             OnPlayerContact(hitPlayer);
-            Debug.Log("Player walked into enemy");
         }
     }
 
     protected virtual void OnPlayerContact(Player hitPlayer)
     {
-        // Deal damage to player on contact
+        // Show damage effect and deal damage
+        CollisionEffects.Instance?.PlayDamageTaken(transform.position);
         hitPlayer.TakeDamage((int)damage);
     }
 
