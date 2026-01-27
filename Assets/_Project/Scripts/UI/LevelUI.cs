@@ -23,18 +23,23 @@ public class LevelUI : MonoBehaviour
 
     [Header("Transition Effect")]
     [SerializeField] private ParticleSystem transitionParticles;
+    [SerializeField] private AudioClip levelLoadSound; // SFX for loading/transition
     [SerializeField] private float transitionDuration = 2f;
     [SerializeField] private float scaleMultiplier = 5f;
 
     [Header("Game Over / Lose")]
-    [SerializeField] private GameObject losePanel;
     [SerializeField] private Button retryButton;
-    [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioClip sliceSound;
     [SerializeField] private ParticleSystem loseParticles;
 
     [Header("Audio")]
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource musicSource; // For BGM / Win Music
     [SerializeField] private AudioClip buttonClickSound;
+    [SerializeField] private AudioClip sliceSound; // Played on Game Over
+    [SerializeField] private AudioClip winMusic;   // Loop or track for Win Scene
+
+    [Header("Menus")]
+    [SerializeField] private GameObject losePanel;
 
     // ... (Start method remains same) ...
 
@@ -194,13 +199,15 @@ public class LevelUI : MonoBehaviour
     }
 
     [Header("Win Sequence")]
-    [SerializeField] private ParticleSystem winParticles;
-    [SerializeField] private Image finalMaskImage; // The white mask in the middle
-    [SerializeField] private Image movingArtifactImage; // A duplicate image inside WinPanel used for animation
+    [SerializeField] private ParticleSystem winParticles;     // The first particles (Transition)
+    [SerializeField] private ParticleSystem poofParticles;    // The second particles (Introduction/Poof)
+    [SerializeField] private AudioClip poofSound;             // SFX for Poof
+    [SerializeField] private Image finalMaskImage;            // The white mask in the middle
+    [SerializeField] private Image movingArtifactImage;       // A duplicate image inside WinPanel used for animation
     [SerializeField] private float moveDuration = 1.0f;
-    [SerializeField] private float delayBeforeParticles = 0.2f; // Wait after arriving before bursting
-    [SerializeField] private float particlePlayDuration = 2.0f; // Wait so particles can fly before we fade
-    [SerializeField] private float fadeDuration = 1.0f;
+    [SerializeField] private float delayBeforeParticles = 0.2f; 
+    [SerializeField] private float particlePlayDuration = 2.0f; 
+    [SerializeField] private float fadeDuration = 0.5f;       // Used for Pump duration now
 
     private System.Collections.IEnumerator PlayWinSequence()
     {
@@ -211,11 +218,19 @@ public class LevelUI : MonoBehaviour
         if (pausePanel != null) pausePanel.SetActive(false);
         if (losePanel != null) losePanel.SetActive(false);
 
-        // Setup Initial State
+        // PLAY WIN MUSIC
+        if (musicSource != null && winMusic != null)
+        {
+            musicSource.Stop(); // Stop current BGM
+            musicSource.clip = winMusic;
+            musicSource.Play();
+        }
+
+        // Setup Initial State: Final Mask hidden by SCALE (Pump ready), Alpha is visible
         if (finalMaskImage != null)
         {
-            finalMaskImage.canvasRenderer.SetAlpha(0f);
-            // finalMaskImage.transform.localScale = Vector3.one; // Don't touch scale
+            finalMaskImage.canvasRenderer.SetAlpha(1f);
+            finalMaskImage.transform.localScale = Vector3.zero; // Start small for pump
             finalMaskImage.gameObject.SetActive(true);
         }
 
@@ -241,7 +256,7 @@ public class LevelUI : MonoBehaviour
             {
                 timer += Time.unscaledDeltaTime;
                 float t = timer / moveDuration;
-                t = t * t * (3f - 2f * t);
+                t = t * t * (3f - 2f * t); // Smooth step
                 
                 movingRect.anchoredPosition = Vector2.Lerp(startAnchoredPos, targetAnchoredPos, t);
                 yield return null;
@@ -255,33 +270,52 @@ public class LevelUI : MonoBehaviour
              yield return new WaitForSecondsRealtime(delayBeforeParticles);
         }
 
-        // 2. Play Particles & START FADING OUT BLACK MASK (Concurrent)
+        // 2. Play Transition Particles & Fade Out Moving Artifact
         if (winParticles != null)
         {
-            winParticles.gameObject.SetActive(true); // User requested enabling it
+            winParticles.gameObject.SetActive(true);
             winParticles.Simulate(0, true, true); 
             winParticles.Play();
         }
 
-        // Start fading out the moving artifact NOW (concurrently)
         StartCoroutine(FadeOutMovingArtifact());
 
-        // Wait for particles to play out before switching to final mask
+        // Wait for transition particles to do their thing
         if (particlePlayDuration > 0f)
         {
             yield return new WaitForSecondsRealtime(particlePlayDuration);
         }
         
-        // 3. Fade In Final (ALPHA ONLY) - Moving artifact should be gone by now
-        float swapTimer = 0f;
-        while (swapTimer < fadeDuration)
+        // 3. POOF & PUMP!
+        
+        // Play Poof Particles
+        if (poofParticles != null)
         {
-            swapTimer += Time.unscaledDeltaTime;
-            float t = swapTimer / fadeDuration;
+            if (sfxSource != null && poofSound != null) sfxSource.PlayOneShot(poofSound);
+            
+            poofParticles.gameObject.SetActive(true);
+            // Don't auto-move. User places it.
+            
+            poofParticles.Simulate(0, true, true);
+            poofParticles.Play();
+        }
+
+        // "Pump" Animation (Scale Up with bounce)
+        float pumpTimer = 0f;
+        while (pumpTimer < fadeDuration)
+        {
+            pumpTimer += Time.unscaledDeltaTime;
+            float t = pumpTimer / fadeDuration;
+            
+            // Overshoot ease (BackOut)
+            // c1 = 1.70158; c3 = c1 + 1; 
+            // return 1 + c3 * (x - 1)^3 + c1 * (x - 1)^2;
+            // Simplified Overshoot:
+            float scale = Mathf.LerpUnclamped(0f, 1f, EaseOutBack(t));
             
             if (finalMaskImage != null)
             {
-                finalMaskImage.canvasRenderer.SetAlpha(t);
+                finalMaskImage.transform.localScale = Vector3.one * scale;
             }
             
             yield return null;
@@ -289,8 +323,15 @@ public class LevelUI : MonoBehaviour
         
         if (finalMaskImage != null)
         {
-            finalMaskImage.canvasRenderer.SetAlpha(1f);
+            finalMaskImage.transform.localScale = Vector3.one;
         }
+    }
+
+    private float EaseOutBack(float x)
+    {
+        float c1 = 1.70158f;
+        float c3 = c1 + 1;
+        return 1 + c3 * Mathf.Pow(x - 1, 3) + c1 * Mathf.Pow(x - 1, 2);
     }
 
     private System.Collections.IEnumerator FadeOutMovingArtifact()
@@ -337,6 +378,8 @@ public class LevelUI : MonoBehaviour
 
     private System.Collections.IEnumerator PlayTransitionRoutine()
     {
+        if (sfxSource != null && levelLoadSound != null) sfxSource.PlayOneShot(levelLoadSound);
+
         // 1. Hide the Next Level Panel immediately so we see the effect
         if (levelCompletePanel != null) levelCompletePanel.SetActive(false);
 

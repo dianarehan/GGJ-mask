@@ -135,12 +135,12 @@ TextureImporter:
       name: unnamed-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 7
-        width: 603
-        height: 398
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 65
+        y: 16
+        width: 468
+        height: 360
+      alignment: 9
+      pivot: {x: 0.44, y: 0.54}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -162,7 +162,7 @@ TextureImporter:
         width: 10
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -184,7 +184,7 @@ TextureImporter:
         width: 29
         height: 37
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -201,7 +201,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 260d38fe7499822439c5abfc3da93021
     internalID: 0
     vertices: []
     indices: 
