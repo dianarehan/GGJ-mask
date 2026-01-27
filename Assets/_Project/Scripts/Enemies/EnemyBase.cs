@@ -84,7 +84,7 @@ public abstract class EnemyBase : MonoBehaviour
             {
                 // Player dashed into us - we die, show kill effect
                 CollisionEffects.Instance?.PlayEnemyKill(transform.position);
-                TakeDamage(999f);
+                TakeDamage(1f);
             }
             else
             {

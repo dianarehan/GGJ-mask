@@ -21,6 +21,11 @@ public class LevelUI : MonoBehaviour
     [SerializeField] private GameObject gameplayPanel; // Parent object for HUD
     [SerializeField] private Button resumeButton;
 
+    [Header("Transition Effect")]
+    [SerializeField] private ParticleSystem transitionParticles;
+    [SerializeField] private float transitionDuration = 2f;
+    [SerializeField] private float scaleMultiplier = 5f;
+
     private void Start()
     {
         // Setup button listeners
@@ -32,6 +37,12 @@ public class LevelUI : MonoBehaviour
         if (winPanel != null) winPanel.SetActive(false);
         if (pausePanel != null) pausePanel.SetActive(false);
         if (gameplayPanel != null) gameplayPanel.SetActive(true);
+        
+        if (transitionParticles != null) 
+        {
+            transitionParticles.Stop();
+            transitionParticles.gameObject.SetActive(false);
+        }
     }
 
     public void TogglePauseUI(bool isPaused)
@@ -86,7 +97,6 @@ public class LevelUI : MonoBehaviour
         if (winPanel != null)
         {
             winPanel.SetActive(true);
-            // Optional: Hide other HUD elements
         }
         if (levelCompletePanel != null)
         {
@@ -96,7 +106,49 @@ public class LevelUI : MonoBehaviour
 
     private void OnNextLevelClicked()
     {
-        // Notify LevelManager
+        if (transitionParticles != null)
+        {
+            StartCoroutine(PlayTransitionRoutine());
+        }
+        else
+        {
+            // Fallback if no particles
+            LevelManager.Instance?.StartNextLevel();
+        }
+    }
+
+    private System.Collections.IEnumerator PlayTransitionRoutine()
+    {
+        // 1. Hide the Next Level Panel immediately so we see the effect
+        if (levelCompletePanel != null) levelCompletePanel.SetActive(false);
+
+        // 2. Setup and Play Particles
+        transitionParticles.gameObject.SetActive(true);
+        transitionParticles.transform.localScale = Vector3.one; 
+        transitionParticles.Play();
+
+        // 3. Scale Up Animation
+        float timer = 0f;
+        Vector3 startScale = Vector3.one;
+        Vector3 endScale = Vector3.one * scaleMultiplier;
+
+        while (timer < transitionDuration)
+        {
+            // Use unscaled time because game is paused!
+            timer += Time.unscaledDeltaTime;
+            float t = timer / transitionDuration;
+            
+            // Smooth step ease
+            t = t * t * (3f - 2f * t);
+            
+            transitionParticles.transform.localScale = Vector3.Lerp(startScale, endScale, t);
+            yield return null;
+        }
+
+        // 4. Cleanup and Notify Manager
+        transitionParticles.Stop();
+        transitionParticles.gameObject.SetActive(false);
+        
         LevelManager.Instance?.StartNextLevel();
     }
 }
