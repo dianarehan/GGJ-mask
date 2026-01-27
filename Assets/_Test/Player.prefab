@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.73, y: 0.06, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 946909190103508170}
@@ -175,13 +175,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipController
   currentState: 0
-  acceleration: 2
-  maxSpeed: 4
-  turnSpeed: 190
+  acceleration: 3
+  maxSpeed: 5
+  turnSpeed: 230
   deceleration: 10
   driftFactor: 0.95
+  mask: {fileID: 0}
   dashForce: 20
-  dashDuration: 5
+  dashDuration: 2.5
   normalMat: {fileID: 6200000, guid: 945b88d2b74cfc04fa27be9ff672c811, type: 2}
   bouncyMat: {fileID: 6200000, guid: de22b4e6acacbe040916cf0aeecf72a7, type: 2}
   useTrail: 1
