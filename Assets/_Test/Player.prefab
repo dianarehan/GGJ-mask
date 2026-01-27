@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5443536375185108462}
   - component: {fileID: 4244730394136183826}
-  - component: {fileID: 3774662310950366685}
+  - component: {fileID: 8267697452500320917}
   - component: {fileID: 5414444893568918923}
   - component: {fileID: 386500173146005323}
   m_Layer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3944599640377770395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.73, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93,8 +93,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &3774662310950366685
-PolygonCollider2D:
+--- !u!70 &8267697452500320917
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -127,26 +127,9 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.25}
-    oldSize: {x: 0.46, y: 0.51}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.00988283, y: 0.37017426}
-      - {x: -0.1379083, y: 0.24796578}
-      - {x: -0.21673048, y: 0.1683491}
-      - {x: -0.22999999, y: -0.1275}
-      - {x: 0.22999999, y: -0.1275}
-      - {x: 0.19546564, y: 0.1418028}
-      - {x: 0.08697721, y: 0.30110556}
-  m_UseDelaunayMesh: 0
+  m_Offset: {x: 0, y: 0.1}
+  m_Size: {x: 0.4, y: 0.53}
+  m_Direction: 0
 --- !u!50 &5414444893568918923
 Rigidbody2D:
   serializedVersion: 5
@@ -186,8 +169,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c3c8cde8108a4448af30ccd21832c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipController
+  currentState: 0
   acceleration: 2
   maxSpeed: 4
   turnSpeed: 190
   deceleration: 10
   driftFactor: 0.95
+  dashForce: 20
+  dashDuration: 5
+  normalMat: {fileID: 6200000, guid: 945b88d2b74cfc04fa27be9ff672c811, type: 2}
+  bouncyMat: {fileID: 6200000, guid: de22b4e6acacbe040916cf0aeecf72a7, type: 2}
