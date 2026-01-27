@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6134642631440288635}
   - component: {fileID: 2771894851063314038}
   - component: {fileID: 1205198770054730778}
+  - component: {fileID: 8841496512077625556}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -185,6 +186,7 @@ MonoBehaviour:
   dashForce: 20
   dashDuration: 2.5
   dashCooldown: 2
+  minDashSpeed: 15
   normalMat: {fileID: 6200000, guid: 945b88d2b74cfc04fa27be9ff672c811, type: 2}
   bouncyMat: {fileID: 6200000, guid: de22b4e6acacbe040916cf0aeecf72a7, type: 2}
   useTrail: 1
@@ -426,6 +428,83 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &8841496512077625556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3944599640377770395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bac07da6fb90b438673dfd200991f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MultiFX
+  effectGroups:
+  - tagToDetect: Enemy
+    variants:
+    - name: Boing
+      vfxPrefab: {fileID: 8646951538455718151, guid: b983c79e4e36d3a4387fa594d0496b23, type: 3}
+      sfxClip: {fileID: 0}
+      volume: 1
+      destroyVfxAfterTime: 1
+      vfxLifetime: 5
+    - name: Boom
+      vfxPrefab: {fileID: 5789409945369206418, guid: fc480501980e7064abe423881280fc76, type: 3}
+      sfxClip: {fileID: 0}
+      volume: 1
+      destroyVfxAfterTime: 1
+      vfxLifetime: 5
+    - name: GGJ
+      vfxPrefab: {fileID: 8646951538455718151, guid: 06c6105312f633a44951fceccea84c90, type: 3}
+      sfxClip: {fileID: 0}
+      volume: 1
+      destroyVfxAfterTime: 1
+      vfxLifetime: 5
+    - name: Pow
+      vfxPrefab: {fileID: 9052769377778856701, guid: 5fe8c6d43e87ebb4e91035a53d951029, type: 3}
+      sfxClip: {fileID: 0}
+      volume: 1
+      destroyVfxAfterTime: 1
+      vfxLifetime: 5
+  useDefaultEffects: 1
+  defaultVariants:
+  - name: 
+    vfxPrefab: {fileID: 7063787217511755450, guid: 59834ea0a1794484c9b0d2714fbc71f5, type: 3}
+    sfxClip: {fileID: 0}
+    volume: 1
+    destroyVfxAfterTime: 1
+    vfxLifetime: 5
+  - name: 
+    vfxPrefab: {fileID: 5272686304646001713, guid: c9fcf9d34274598488791623d9799868, type: 3}
+    sfxClip: {fileID: 0}
+    volume: 1
+    destroyVfxAfterTime: 1
+    vfxLifetime: 5
+  - name: 
+    vfxPrefab: {fileID: 7110350694466063256, guid: 4eeb792b72984f845925f609803db6ab, type: 3}
+    sfxClip: {fileID: 0}
+    volume: 1
+    destroyVfxAfterTime: 1
+    vfxLifetime: 5
+  - name: 
+    vfxPrefab: {fileID: 2577194370618353577, guid: c65aa97a7a7f96d498859e17dc5a2f45, type: 3}
+    sfxClip: {fileID: 0}
+    volume: 1
+    destroyVfxAfterTime: 1
+    vfxLifetime: 5
+  - name: 
+    vfxPrefab: {fileID: 5963995882999752727, guid: 3ee39c1ef5e3b4141a7381c341eca5f6, type: 3}
+    sfxClip: {fileID: 0}
+    volume: 1
+    destroyVfxAfterTime: 1
+    vfxLifetime: 5
+  - name: 
+    vfxPrefab: {fileID: 9167551897834583671, guid: 258bc248f039dd442b6db5482e71763d, type: 3}
+    sfxClip: {fileID: 0}
+    volume: 1
+    destroyVfxAfterTime: 1
+    vfxLifetime: 5
 --- !u!1 &5172624829531056937
 GameObject:
   m_ObjectHideFlags: 0
