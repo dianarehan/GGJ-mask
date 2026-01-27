@@ -36,7 +36,7 @@ public class ShipMovement : MonoBehaviour
         if (turnInput != 0)
         {
             float forwardEffect = rb.linearVelocity.magnitude / maxSpeed;
-            forwardEffect = Mathf.Clamp(forwardEffect, 0.5f, 1f);
+            forwardEffect = Mathf.Clamp(forwardEffect, 0.3f, 1f);
             float newAngle = rb.rotation - (turnInput * turnSpeed * forwardEffect * Time.fixedDeltaTime);
             rb.MoveRotation(newAngle);
         }
