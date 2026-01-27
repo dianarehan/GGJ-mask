@@ -120,6 +120,7 @@ public class LevelUI : MonoBehaviour
     [Header("Level Artifacts")]
     [SerializeField] private Image globalArtifactImage; // Single image filled across levels
     [SerializeField] private float fillDuration = 1.5f;
+    [SerializeField] private ParticleSystem fillEffectParticles; // Plays once when filled
 
     public void AnimateArtifactFill(int levelIndex, int totalLevels)
     {
@@ -133,6 +134,9 @@ public class LevelUI : MonoBehaviour
 
     private System.Collections.IEnumerator FillImageRoutine(Image img, float start, float target)
     {
+        // START PARTICLES
+        if (fillEffectParticles != null) fillEffectParticles.Play();
+
         float timer = 0f;
         img.fillAmount = start;
         
@@ -147,6 +151,9 @@ public class LevelUI : MonoBehaviour
             yield return null;
         }
         img.fillAmount = target;
+
+        // STOP PARTICLES
+        if (fillEffectParticles != null) fillEffectParticles.Stop();
     }
 
     public void UpdateProgress(float progress)
