@@ -13,19 +13,36 @@ public class LevelUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI completeText;
     [SerializeField] private Button nextLevelButton;
 
+    [Header("Game Win")]
+    [SerializeField] private GameObject winPanel;
+
+    [Header("Pause Menu")]
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject gameplayPanel; // Parent object for HUD
+    [SerializeField] private Button resumeButton;
+
     private void Start()
     {
-        // Setup button listener
-        if (nextLevelButton != null)
-        {
-            nextLevelButton.onClick.AddListener(OnNextLevelClicked);
-        }
+        // Setup button listeners
+        if (nextLevelButton != null) nextLevelButton.onClick.AddListener(OnNextLevelClicked);
+        if (resumeButton != null) resumeButton.onClick.AddListener(OnResumeClicked);
 
-        // Hide panel initially
-        if (levelCompletePanel != null)
-        {
-            levelCompletePanel.SetActive(false);
-        }
+        // Hide overlays, show gameplay
+        if (levelCompletePanel != null) levelCompletePanel.SetActive(false);
+        if (winPanel != null) winPanel.SetActive(false);
+        if (pausePanel != null) pausePanel.SetActive(false);
+        if (gameplayPanel != null) gameplayPanel.SetActive(true);
+    }
+
+    public void TogglePauseUI(bool isPaused)
+    {
+        if (pausePanel != null) pausePanel.SetActive(isPaused);
+        if (gameplayPanel != null) gameplayPanel.SetActive(!isPaused);
+    }
+
+    private void OnResumeClicked()
+    {
+        LevelManager.Instance?.TogglePause();
     }
 
     public void UpdateProgress(float progress)
@@ -58,6 +75,19 @@ public class LevelUI : MonoBehaviour
 
     public void HideLevelComplete()
     {
+        if (levelCompletePanel != null)
+        {
+            levelCompletePanel.SetActive(false);
+        }
+    }
+
+    public void ShowGameWin()
+    {
+        if (winPanel != null)
+        {
+            winPanel.SetActive(true);
+            // Optional: Hide other HUD elements
+        }
         if (levelCompletePanel != null)
         {
             levelCompletePanel.SetActive(false);

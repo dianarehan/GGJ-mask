@@ -46,16 +46,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
   levels:
   - levelName: Level 1
-    killsToWin: 7
-    maxActiveEnemies: 3
+    killsToWin: 10
+    maxActiveEnemies: 4
     spawnInterval: 2
     enemyTypes:
     - enemyPrefab: {fileID: 6936662698421072916, guid: be8002eb46d4f3142adb3d68c5a737f2, type: 3}
       weight: 1
   - levelName: Level 2
-    killsToWin: 12
+    killsToWin: 15
     maxActiveEnemies: 5
-    spawnInterval: 3
+    spawnInterval: 2
     enemyTypes:
     - enemyPrefab: {fileID: 6936662698421072916, guid: be8002eb46d4f3142adb3d68c5a737f2, type: 3}
       weight: 1
@@ -64,7 +64,7 @@ MonoBehaviour:
   - levelName: Level 3
     killsToWin: 18
     maxActiveEnemies: 6
-    spawnInterval: 3
+    spawnInterval: 2
     enemyTypes:
     - enemyPrefab: {fileID: 6936662698421072916, guid: be8002eb46d4f3142adb3d68c5a737f2, type: 3}
       weight: 1

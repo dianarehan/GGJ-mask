@@ -153,10 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a6d40dda69aeff4ba63d1e8feabe61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WandererEnemy
-  health: 1
-  damage: 1
+  health: 2
+  damage: 2
   spriteRenderer: {fileID: 4793531489602642094}
-  moveSpeed: 2
+  moveSpeed: 3
   directionChangeInterval: 2
   minDirectionChangeInterval: 1
   maxDirectionChangeInterval: 3

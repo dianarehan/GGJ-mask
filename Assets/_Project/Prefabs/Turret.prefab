@@ -112,7 +112,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 4962208229896282334}
   shootRange: 10
   shootInterval: 2
-  projectileSpeed: 3
+  projectileSpeed: 5
   projectilePrefab: {fileID: 6228274438442949821, guid: e1531fee413152941a516c9db06c5f84, type: 3}
   firePoint: {fileID: 530947672466757323}
 --- !u!60 &-3418490544091552493

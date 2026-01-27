@@ -54,6 +54,35 @@ public class LevelManager : MonoBehaviour
         EnemyBase.OnEnemyDeath -= OnEnemyKilled;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        {
+            if (isLevelActive || Time.timeScale == 0f) // Allow unpausing even if time is 0
+            {
+                TogglePause();
+            }
+        }
+    }
+
+    public void TogglePause()
+    {
+        bool isPaused = Time.timeScale == 0f;
+        
+        if (isPaused)
+        {
+            // Resume
+            Time.timeScale = 1f;
+            levelUI?.TogglePauseUI(false);
+        }
+        else
+        {
+            // Pause
+            Time.timeScale = 0f;
+            levelUI?.TogglePauseUI(true);
+        }
+    }
+
     public void StartLevel(int index)
     {
         if (index >= levels.Count)
@@ -108,8 +137,19 @@ public class LevelManager : MonoBehaviour
 
         Debug.Log($"Level {currentLevelIndex + 1} Complete!");
         
-        // Show UI and Pause
-        levelUI?.ShowLevelComplete(currentLevelIndex + 1);
+        // check if this was the last level
+        if (currentLevelIndex >= levels.Count - 1)
+        {
+             // TODO: Show Game Win Panel
+             Debug.Log("GAME COMPLETED! Trigger Win Screen here.");
+             levelUI?.ShowGameWin(); // New method for Win screen
+        }
+        else
+        {
+            // Show UI and Pause
+            levelUI?.ShowLevelComplete(currentLevelIndex + 1);
+        }
+
         Time.timeScale = 0f; // Pause game
     }
 

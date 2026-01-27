@@ -109,7 +109,7 @@ MonoBehaviour:
   health: 1
   damage: 1
   spriteRenderer: {fileID: 8997983598063212466}
-  moveSpeed: 0.3
+  moveSpeed: 1
   detectionRange: 10
   stopDistance: 0.5
 --- !u!60 &3818048381189450893

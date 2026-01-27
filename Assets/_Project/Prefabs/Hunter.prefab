@@ -198,7 +198,7 @@ MonoBehaviour:
   preferredDistance: 5
   shootRange: 8
   shootInterval: 1.5
-  projectileSpeed: 3
+  projectileSpeed: 5
   projectilePrefab: {fileID: 6228274438442949821, guid: e1531fee413152941a516c9db06c5f84, type: 3}
   retreatWhenTooClose: 1
 --- !u!60 &-4529386952855304211
