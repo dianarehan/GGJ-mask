@@ -250,5 +250,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mask
   player: {fileID: 0}
-  rotateSpeed: 5
+  rotateSpeed: 10
   animator: {fileID: 4434941239116861637}
