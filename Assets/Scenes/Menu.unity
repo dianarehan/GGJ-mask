@@ -1103,6 +1103,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3314499023943736784, guid: f5e86485fd484374b91ee3b85061514d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3314499023943736784, guid: f5e86485fd484374b91ee3b85061514d, type: 3}
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 1472704398}
@@ -1365,17 +1369,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8351002978380796650, guid: f5e86485fd484374b91ee3b85061514d, type: 3}
   m_PrefabInstance: {fileID: 1472704392}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1472704394 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6614404898191646286, guid: f5e86485fd484374b91ee3b85061514d, type: 3}
-  m_PrefabInstance: {fileID: 1472704392}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!224 &1472704395 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2040259499545394877, guid: f5e86485fd484374b91ee3b85061514d, type: 3}
@@ -1528,7 +1521,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1472704394}
+  m_TargetGraphic: {fileID: 1472704404}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1556,6 +1549,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdc5cfa504f4a554a95bc00e6e0c7ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
+--- !u!114 &1472704404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3073287816254355311, guid: f5e86485fd484374b91ee3b85061514d, type: 3}
+  m_PrefabInstance: {fileID: 1472704392}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472704396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1543027259
 GameObject:
   m_ObjectHideFlags: 0
