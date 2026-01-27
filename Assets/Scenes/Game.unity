@@ -1346,7 +1346,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4380991122151212453, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: m_Intensity
-      value: 11.08
+      value: 1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380991122151212453, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: m_LightType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380991122151212453, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: -0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380991122151212453, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 0.9985302
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380991122151212453, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 0.99853027
       objectReference: {fileID: 0}
     - target: {fileID: 5443536375185108462, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: m_LocalScale.x
