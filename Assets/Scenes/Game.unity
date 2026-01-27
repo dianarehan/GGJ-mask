@@ -210,8 +210,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.21133333}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.46, y: 0.51}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -675,7 +675,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &643699848
@@ -2360,6 +2360,18 @@ PrefabInstance:
     - target: {fileID: 3944599640377770395, guid: 722f5b43f055dfb4aaea85cec9e4e07f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244730394136183826, guid: 722f5b43f055dfb4aaea85cec9e4e07f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8827186469925396442, guid: 9c29026c5643a1c49b2cb4547874e298, type: 3}
+    - target: {fileID: 5443536375185108462, guid: 722f5b43f055dfb4aaea85cec9e4e07f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5443536375185108462, guid: 722f5b43f055dfb4aaea85cec9e4e07f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5443536375185108462, guid: 722f5b43f055dfb4aaea85cec9e4e07f, type: 3}
       propertyPath: m_LocalPosition.x
