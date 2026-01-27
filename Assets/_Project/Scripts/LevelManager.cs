@@ -133,6 +133,16 @@ public class LevelManager : MonoBehaviour
         isLevelActive = true;
         Time.timeScale = 1f;
 
+        // Reset Player Velocity/Inertia
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            var ship = playerObj.GetComponent<ShipMovement>();
+            if (ship != null) ship.ResetMovement();
+            
+            playerObj.transform.position = Vector3.zero; // Reset position too
+        }
+
         // update UI
         levelUI?.HideLevelComplete();
         levelUI?.UpdateLevelText(currentLevelIndex + 1);

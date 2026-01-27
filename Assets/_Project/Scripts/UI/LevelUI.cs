@@ -33,6 +33,11 @@ public class LevelUI : MonoBehaviour
     [SerializeField] private AudioClip sliceSound;
     [SerializeField] private ParticleSystem loseParticles;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip buttonClickSound;
+
+    // ... (Start method remains same) ...
+
     private void Start()
     {
         // Setup button listeners
@@ -54,7 +59,7 @@ public class LevelUI : MonoBehaviour
         }
     }
 
-    // ... existing toggle pause methods ...
+    // ...
 
     public void ShowGameOver()
     {
@@ -70,6 +75,13 @@ public class LevelUI : MonoBehaviour
         {
             loseParticles.Play();
         }
+        
+        StartCoroutine(PlaySliceSoundDelayed());
+    }
+
+    private System.Collections.IEnumerator PlaySliceSoundDelayed()
+    {
+        yield return new WaitForSecondsRealtime(1f);
         if (sfxSource != null && sliceSound != null)
         {
             sfxSource.PlayOneShot(sliceSound);
@@ -78,6 +90,12 @@ public class LevelUI : MonoBehaviour
 
     private void OnRetryClicked()
     {
+        if (buttonClickSound != null)
+        {
+            // Use PlayClipAtPoint to create a temporary source that survives the scene destruction
+            AudioSource.PlayClipAtPoint(buttonClickSound, Camera.main.transform.position);
+        }
+
         // Reload current scene
         string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneName);
@@ -142,8 +160,12 @@ public class LevelUI : MonoBehaviour
         }
     }
 
+    // ...
+
     private void OnNextLevelClicked()
     {
+        if (sfxSource != null && buttonClickSound != null) sfxSource.PlayOneShot(buttonClickSound);
+
         if (transitionParticles != null)
         {
             StartCoroutine(PlayTransitionRoutine());
@@ -154,6 +176,8 @@ public class LevelUI : MonoBehaviour
             LevelManager.Instance?.StartNextLevel();
         }
     }
+
+
 
     private System.Collections.IEnumerator PlayTransitionRoutine()
     {

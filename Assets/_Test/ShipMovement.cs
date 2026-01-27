@@ -248,6 +248,13 @@ public class ShipMovement : MonoBehaviour
         }
     }
 
+    public void ResetMovement()
+    {
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        currentState = ShipState.Normal;
+    }
+
     private void UpdateInvincibility()
     {
         if (!isInvincible) return;
