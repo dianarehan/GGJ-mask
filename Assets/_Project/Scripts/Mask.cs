@@ -21,12 +21,6 @@ public class Mask : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // for Test
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            MaskOn(5);
-        }
-
         transform.position = player.position;
         transform.rotation = Quaternion.Slerp(transform.rotation, player.rotation, rotateSpeed * Time.deltaTime);
     }

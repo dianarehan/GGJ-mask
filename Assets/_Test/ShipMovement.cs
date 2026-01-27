@@ -23,6 +23,9 @@ public class ShipMovement : MonoBehaviour
     public float deceleration = 10f;
     [Range(0, 1)] public float driftFactor = 0.9f;
 
+    [Header("Mask Ref")]
+    public Mask mask;
+
     [Header("Dash Settings (Chaos)")]
     public float dashForce = 40f;
     public float dashDuration = 3f;
@@ -222,6 +225,7 @@ public class ShipMovement : MonoBehaviour
                 trailRenderer.Clear();
                 trailRenderer.emitting = true;
             }
+            mask.MaskOn(dashDuration);
         }
         else if (newState == ShipState.Normal)
         {
