@@ -289,6 +289,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1472704398}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 0a0d259436749c54387f2dcaadc037d4, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 7662953611385114417}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -989,6 +1001,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1472704398}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 0a0d259436749c54387f2dcaadc037d4, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &914056557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1157,11 +1181,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 9e7e894dc696f07419a2d80df543613f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.627
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1297,6 +1321,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Game
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1472704398}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 0a0d259436749c54387f2dcaadc037d4, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1472704400
@@ -1885,50 +1921,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6813061711599746741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3314499025332089432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8351002979164912994}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f9ce00aac565c04db09a470ee78b778, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelUI
-  radialProgressBar: {fileID: 0}
-  levelText: {fileID: 0}
-  levelCompletePanel: {fileID: 7662953611385114417}
-  completeText: {fileID: 3073287815436949735}
-  nextLevelButton: {fileID: 4156197328449698583}
-  winPanel: {fileID: 0}
-  pausePanel: {fileID: 0}
-  gameplayPanel: {fileID: 0}
-  resumeButton: {fileID: 0}
-  transitionParticles: {fileID: 0}
-  levelLoadSound: {fileID: 0}
-  transitionDuration: 1.5
-  scaleMultiplier: 5
-  retryButton: {fileID: 0}
-  loseParticles: {fileID: 0}
-  sfxSource: {fileID: 1472704398}
-  musicSource: {fileID: 0}
-  buttonClickSound: {fileID: 8300000, guid: 2eec829ecaa7a3a4c8e8d064ab9ace9b, type: 3}
-  sliceSound: {fileID: 8300000, guid: e0019ba6eae63fb4f921f0f9d5a60273, type: 3}
-  winMusic: {fileID: 0}
-  losePanel: {fileID: 0}
-  globalArtifactImage: {fileID: 0}
-  fillDuration: 1.5
-  winParticles: {fileID: 0}
-  poofParticles: {fileID: 0}
-  poofSound: {fileID: 0}
-  finalMaskImage: {fileID: 0}
-  movingArtifactImage: {fileID: 0}
-  moveDuration: 3
-  delayBeforeParticles: 0.2
-  particlePlayDuration: 2
-  fadeDuration: 3
 --- !u!1 &3588312595632227494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,6 +1995,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1472704398}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 0a0d259436749c54387f2dcaadc037d4, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 161200139}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -2266,7 +2270,6 @@ GameObject:
   - component: {fileID: 1262452848092383229}
   - component: {fileID: 6599206591468974928}
   - component: {fileID: 2632284966325638231}
-  - component: {fileID: 3314499025332089432}
   - component: {fileID: 1472704398}
   - component: {fileID: 1472704400}
   m_Layer: 5
