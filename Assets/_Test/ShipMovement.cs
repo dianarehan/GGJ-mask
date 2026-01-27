@@ -31,6 +31,7 @@ public class ShipMovement : MonoBehaviour
     public float dashDuration = 3f;
     [Tooltip("Time in seconds before you can dash again AFTER the dash finishes.")]
     public float dashCooldown = 2f; // NEW: The Reload Time
+    public float minDashSpeed = 15f;
     public PhysicsMaterial2D normalMat;
     public PhysicsMaterial2D bouncyMat;
 
@@ -208,6 +209,19 @@ public class ShipMovement : MonoBehaviour
         {
             float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg - 90f;
             rb.MoveRotation(angle);
+        }
+
+        float currentSpeed = rb.linearVelocity.magnitude;
+        if (currentSpeed < minDashSpeed)
+        {
+            if (currentSpeed > 0.1f)
+            {
+                rb.linearVelocity = rb.linearVelocity.normalized * minDashSpeed;
+            }
+            else
+            {
+                rb.linearVelocity = transform.up * minDashSpeed;
+            }
         }
     }
 
