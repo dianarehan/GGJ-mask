@@ -3,20 +3,28 @@ using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// Simple UI to display player health
+/// Simple UI to display player health using hearts, slider, or text
 /// </summary>
 public class HealthUI : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Player player;
-    [SerializeField] private Image[] heartImages;           // Array of heart images
+    
+    [Header("Hearts Display")]
+    [SerializeField] private bool useHearts = false;
+    [SerializeField] private Image[] heartImages;
     [SerializeField] private Sprite fullHeartSprite;
     [SerializeField] private Sprite emptyHeartSprite;
-    [SerializeField] private TextMeshProUGUI healthText;    // Optional text display
-
-    [Header("Settings")]
-    [SerializeField] private bool useHearts = true;
+    
+    [Header("Slider Display")]
+    [SerializeField] private bool useSlider = true;
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private Image fillImage;  // Optional: to change fill color based on health
+    [SerializeField] private Gradient healthGradient;  // Optional: color gradient from low to full health
+    
+    [Header("Text Display")]
     [SerializeField] private bool useText = false;
+    [SerializeField] private TextMeshProUGUI healthText;
 
     private void Start()
     {
@@ -28,6 +36,14 @@ public class HealthUI : MonoBehaviour
         if (player != null)
         {
             player.OnHealthChanged += UpdateHealthDisplay;
+            
+            // Initialize slider
+            if (healthSlider != null)
+            {
+                healthSlider.maxValue = player.MaxHealth;
+                healthSlider.value = player.CurrentHealth;
+            }
+            
             UpdateHealthDisplay(player.CurrentHealth, player.MaxHealth);
         }
     }
@@ -42,6 +58,20 @@ public class HealthUI : MonoBehaviour
 
     private void UpdateHealthDisplay(int currentHealth, int maxHealth)
     {
+        // Update slider
+        if (useSlider && healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+            
+            // Update fill color based on health percentage
+            if (fillImage != null && healthGradient != null)
+            {
+                float healthPercent = (float)currentHealth / maxHealth;
+                fillImage.color = healthGradient.Evaluate(healthPercent);
+            }
+        }
+        
         // Update heart images
         if (useHearts && heartImages != null && heartImages.Length > 0)
         {
@@ -62,7 +92,8 @@ public class HealthUI : MonoBehaviour
         // Update text
         if (useText && healthText != null)
         {
-            healthText.text = $"HP: {currentHealth}/{maxHealth}";
+            healthText.text = $"{currentHealth}/{maxHealth}";
         }
     }
 }
+

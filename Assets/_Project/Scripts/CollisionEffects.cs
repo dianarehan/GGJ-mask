@@ -20,14 +20,13 @@ public class CollisionEffects : MonoBehaviour
     [SerializeField] private AudioClip enemyKillSound;
     [SerializeField] private AudioClip damageTakenSound;
     [SerializeField] private AudioClip wallHitSound;
-    [SerializeField] private AudioClip dashSound;
     [Range(0f, 1f)]
     [SerializeField] private float sfxVolume = 1f;
 
     private AudioSource audioSource;
     private CartoonFX.CFXR_Effect cfxrEffect; // Reference to CFXR for camera shake reset
 
-    public enum EffectType { EnemyKill, DamageTaken, WallHit, ProjectileHit, Dash }
+    public enum EffectType { EnemyKill, DamageTaken, WallHit, ProjectileHit }
 
     private void Awake()
     {
@@ -83,7 +82,6 @@ public class CollisionEffects : MonoBehaviour
     public void PlayDamageTaken(Vector3 position) => Play(EffectType.DamageTaken, position);
     public void PlayWallHit(Vector3 position) => Play(EffectType.WallHit, position);
     public void PlayProjectileHit(Vector3 position) => Play(EffectType.ProjectileHit, position);
-    public void PlayDash(Vector3 position) => Play(EffectType.Dash, position);
 
     private Color GetColor(EffectType type)
     {
@@ -93,7 +91,6 @@ public class CollisionEffects : MonoBehaviour
             EffectType.DamageTaken => damageTakenColor,
             EffectType.WallHit => wallHitColor,
             EffectType.ProjectileHit => projectileHitColor,
-            EffectType.Dash => enemyKillColor,
             _ => Color.white
         };
     }
@@ -106,7 +103,6 @@ public class CollisionEffects : MonoBehaviour
             EffectType.DamageTaken => damageTakenSound,
             EffectType.WallHit => wallHitSound,
             EffectType.ProjectileHit => damageTakenSound,
-            EffectType.Dash => dashSound,
             _ => null
         };
     }

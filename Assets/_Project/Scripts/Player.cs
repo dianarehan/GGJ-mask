@@ -21,6 +21,11 @@ public class Player : MonoBehaviour
     [SerializeField] private Color trailStartColor = new Color(0f, 1f, 1f, 1f);  // Cyan
     [SerializeField] private Color trailEndColor = new Color(0f, 1f, 1f, 0f);    // Transparent cyan
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip dashSound;
+    [Range(0f, 1f)]
+    [SerializeField] private float dashVolume = 1f;
+
     // Events for UI/Game Manager
     public event Action<int, int> OnHealthChanged; // (currentHealth, maxHealth)
     public event Action OnPlayerDeath;
@@ -43,6 +48,7 @@ public class Player : MonoBehaviour
     // Components
     private Rigidbody2D rb;
     private TrailRenderer trailRenderer;
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -60,6 +66,13 @@ public class Player : MonoBehaviour
             originalColor = spriteRenderer.color;
         }
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
+        // Setup audio
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
         SetupTrailRenderer();
     }
@@ -154,14 +167,18 @@ public class Player : MonoBehaviour
         dashTimer = dashDuration;
         cooldownTimer = dashCooldown;
 
+        // Play dash sound
+        if (dashSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(dashSound, dashVolume);
+        }
+
         // Start trail effect
         if (trailRenderer != null)
         {
             trailRenderer.Clear();
             trailRenderer.emitting = true;
         }
-
-        Debug.Log($"Dashing in direction: {facingVector}");
     }
 
     private void PerformDash()
