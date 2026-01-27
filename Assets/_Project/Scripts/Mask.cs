@@ -3,8 +3,8 @@ using UnityEngine;
 public class Mask : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    [SerializeField] private float rotateSpeed = 20;
-
+    [SerializeField] private Transform mask;
+    [SerializeField] private float moveRate = .3f;
     [SerializeField] Animator animator;
     public static Mask Instance { get; private set;}
 
@@ -21,8 +21,8 @@ public class Mask : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.position;
-        transform.rotation = Quaternion.Slerp(transform.rotation, player.rotation, rotateSpeed * Time.deltaTime);
+        mask.position = Vector2.SmoothDamp(mask.position, player.position, ref currentVelocity, moveRate);
+        mask.rotation = player.rotation;
     }
 
     public void MaskOn(float maskTime)

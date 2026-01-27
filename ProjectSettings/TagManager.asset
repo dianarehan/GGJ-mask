@@ -47,5 +47,8 @@ TagManager:
   - name: Mask
     uniqueID: 2027397845
     locked: 0
+  - name: VFX
+    uniqueID: 2063585167
+    locked: 0
   m_RenderingLayers:
   - Default
