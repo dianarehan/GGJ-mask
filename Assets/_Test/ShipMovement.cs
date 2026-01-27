@@ -29,6 +29,8 @@ public class ShipMovement : MonoBehaviour
     [Header("Dash Settings (Chaos)")]
     public float dashForce = 40f;
     public float dashDuration = 3f;
+    [Tooltip("Time in seconds before you can dash again AFTER the dash finishes.")]
+    public float dashCooldown = 2f; // NEW: The Reload Time
     public PhysicsMaterial2D normalMat;
     public PhysicsMaterial2D bouncyMat;
 
@@ -53,6 +55,8 @@ public class ShipMovement : MonoBehaviour
     // Events for UI/Game Manager
     public event Action<int, int> OnHealthChanged;
     public event Action OnPlayerDeath;
+    // NEW: Event sends (CurrentTimer, MaxTime) for UI bars
+    public event Action<float, float> OnDashCooldownUpdated;
 
     // Health state
     private int currentHealth;
@@ -70,6 +74,9 @@ public class ShipMovement : MonoBehaviour
     private bool isDashPressed;
     private float dashTimer;
 
+    // NEW: Cooldown tracking
+    private float dashCooldownTimer = 0f;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -82,7 +89,6 @@ public class ShipMovement : MonoBehaviour
 
     void Start()
     {
-        // Initialize health
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer != null)
@@ -91,7 +97,6 @@ public class ShipMovement : MonoBehaviour
         }
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
 
-        // Setup audio
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -126,7 +131,19 @@ public class ShipMovement : MonoBehaviour
         isGasPressed = Input.GetKey(KeyCode.W);
         isDashPressed = Input.GetKeyDown(KeyCode.Space);
 
-        if (isDashPressed && currentState == ShipState.Normal)
+        // --- NEW COOLDOWN LOGIC ---
+        if (currentState == ShipState.Normal)
+        {
+            if (dashCooldownTimer > 0)
+            {
+                dashCooldownTimer -= Time.deltaTime;
+                // Notify UI: (2.0, 2.0) -> (1.5, 2.0) -> (0, 2.0)
+                OnDashCooldownUpdated?.Invoke(dashCooldownTimer, dashCooldown);
+            }
+        }
+
+        // Only dash if Cooldown is 0
+        if (isDashPressed && currentState == ShipState.Normal && dashCooldownTimer <= 0)
         {
             SwitchState(ShipState.Dash);
         }
@@ -204,43 +221,40 @@ public class ShipMovement : MonoBehaviour
 
             rb.sharedMaterial = bouncyMat;
             col.sharedMaterial = bouncyMat;
-
-            col.enabled = false;
-            col.enabled = true;
+            col.enabled = false; col.enabled = true;
 
             rb.linearDamping = 0f;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
             rb.AddRelativeForce(Vector2.up * dashForce, ForceMode2D.Impulse);
 
-            // Play dash sound
             if (dashSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(dashSound, dashVolume);
             }
 
-            // Start trail effect
             if (trailRenderer != null)
             {
                 trailRenderer.Clear();
                 trailRenderer.emitting = true;
             }
-            mask.MaskOn(dashDuration);
+            if (mask != null) mask.MaskOn(dashDuration);
         }
         else if (newState == ShipState.Normal)
         {
+            // --- NEW: START COOLDOWN ---
+            dashCooldownTimer = dashCooldown;
+            OnDashCooldownUpdated?.Invoke(dashCooldownTimer, dashCooldown); // Force UI update
+
             rb.sharedMaterial = normalMat;
             col.sharedMaterial = normalMat;
-
-            col.enabled = false;
-            col.enabled = true;
+            col.enabled = false; col.enabled = true;
 
             rb.linearDamping = 0f;
             rb.angularDamping = 2f;
             rb.constraints = RigidbodyConstraints2D.None;
             rb.angularVelocity = 0f;
 
-            // Stop trail effect
             if (trailRenderer != null)
             {
                 trailRenderer.emitting = false;
@@ -292,13 +306,11 @@ public class ShipMovement : MonoBehaviour
         {
             isInvincible = true;
             invincibilityTimer = invincibilityDuration;
-            Debug.Log($"Ship took damage! Health: {currentHealth}/{maxHealth}");
         }
     }
 
     private void Die()
     {
-        Debug.Log("Ship destroyed!");
         OnPlayerDeath?.Invoke();
         gameObject.SetActive(false);
     }
@@ -309,24 +321,21 @@ public class ShipMovement : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
-    // Wall collision VFX trigger
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (currentState != ShipState.Dash) return;
-
         if (collision.gameObject.GetComponent<EnemyBase>() != null) return;
 
         if (collision.gameObject.GetComponent<UnityEngine.Tilemaps.TilemapCollider2D>() != null ||
             collision.gameObject.CompareTag("Wall"))
         {
-            Vector3 hitPoint = collision.contacts.Length > 0 
-                ? (Vector3)collision.contacts[0].point 
+            Vector3 hitPoint = collision.contacts.Length > 0
+                ? (Vector3)collision.contacts[0].point
                 : transform.position;
             CollisionEffects.Instance?.PlayWallHit(hitPoint);
         }
     }
 
-    // Public getters
     public bool IsDashing => currentState == ShipState.Dash;
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
