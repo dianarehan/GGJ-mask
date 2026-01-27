@@ -26,16 +26,25 @@ public class LevelUI : MonoBehaviour
     [SerializeField] private float transitionDuration = 2f;
     [SerializeField] private float scaleMultiplier = 5f;
 
+    [Header("Game Over / Lose")]
+    [SerializeField] private GameObject losePanel;
+    [SerializeField] private Button retryButton;
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip sliceSound;
+    [SerializeField] private ParticleSystem loseParticles;
+
     private void Start()
     {
         // Setup button listeners
         if (nextLevelButton != null) nextLevelButton.onClick.AddListener(OnNextLevelClicked);
         if (resumeButton != null) resumeButton.onClick.AddListener(OnResumeClicked);
+        if (retryButton != null) retryButton.onClick.AddListener(OnRetryClicked);
 
         // Hide overlays, show gameplay
         if (levelCompletePanel != null) levelCompletePanel.SetActive(false);
         if (winPanel != null) winPanel.SetActive(false);
         if (pausePanel != null) pausePanel.SetActive(false);
+        if (losePanel != null) losePanel.SetActive(false);
         if (gameplayPanel != null) gameplayPanel.SetActive(true);
         
         if (transitionParticles != null) 
@@ -43,6 +52,35 @@ public class LevelUI : MonoBehaviour
             transitionParticles.Stop();
             transitionParticles.gameObject.SetActive(false);
         }
+    }
+
+    // ... existing toggle pause methods ...
+
+    public void ShowGameOver()
+    {
+        if (losePanel != null)
+        {
+            losePanel.SetActive(true);
+        }
+        if (gameplayPanel != null)
+        {
+            gameplayPanel.SetActive(false);
+        }
+        if (loseParticles != null)
+        {
+            loseParticles.Play();
+        }
+        if (sfxSource != null && sliceSound != null)
+        {
+            sfxSource.PlayOneShot(sliceSound);
+        }
+    }
+
+    private void OnRetryClicked()
+    {
+        // Reload current scene
+        string currentSceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneName);
     }
 
     public void TogglePauseUI(bool isPaused)

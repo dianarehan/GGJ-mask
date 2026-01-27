@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelUI levelUI;
 
     private int currentLevelIndex = 0;
+    private static int savedLevelIndex = 0; // Static to persist across reloads
     private int currentKills = 0;
     private bool isLevelActive = false;
 
@@ -46,12 +47,43 @@ public class LevelManager : MonoBehaviour
         // Subscribe to enemy death event
         EnemyBase.OnEnemyDeath += OnEnemyKilled;
 
-        StartLevel(0);
+        // Subscribe to Player/Ship death
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            var playerScript = playerObj.GetComponent<Player>();
+            if (playerScript != null) playerScript.OnPlayerDeath += OnPlayerDeath;
+
+            var shipScript = playerObj.GetComponent<ShipMovement>();
+            if (shipScript != null) shipScript.OnPlayerDeath += OnPlayerDeath;
+        }
+
+        // Start the saved level (defaults to 0 on first run)
+        StartLevel(savedLevelIndex);
+    }
+
+    // Call this when completing a level to save progress
+    private void SaveLevelProgress(int nextLevel)
+    {
+        savedLevelIndex = nextLevel;
+    }
+    
+    private void OnPlayerDeath()
+    {
+        Debug.Log("Player Died - Game Over");
+        isLevelActive = false;
+        spawner.StopSpawning();
+        // Don't clear enemies so they stay on screen as you die
+        
+        levelUI?.ShowGameOver();
+        Time.timeScale = 0f;
     }
 
     private void OnDestroy()
     {
         EnemyBase.OnEnemyDeath -= OnEnemyKilled;
+        
+        // Unsubscribe? (Optional as Manager is destroyed usually on scene reload)
     }
 
     private void Update()
@@ -92,6 +124,8 @@ public class LevelManager : MonoBehaviour
         }
 
         currentLevelIndex = index;
+        savedLevelIndex = index; // Update saved index (so retry works on this level)
+        
         LevelConfig config = levels[currentLevelIndex];
         
         // Reset state
