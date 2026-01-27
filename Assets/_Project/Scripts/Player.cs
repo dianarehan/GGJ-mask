@@ -258,6 +258,24 @@ public class Player : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
+    // Handle wall collisions for VFX/SFX
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!isDashing) return;
+
+        // Check if it's a wall/tilemap (not an enemy)
+        if (collision.gameObject.GetComponent<EnemyBase>() != null) return;
+
+        if (collision.gameObject.GetComponent<UnityEngine.Tilemaps.TilemapCollider2D>() != null ||
+            collision.gameObject.CompareTag("Wall"))
+        {
+            Vector3 hitPoint = collision.contacts.Length > 0 
+                ? (Vector3)collision.contacts[0].point 
+                : transform.position;
+            CollisionEffects.Instance?.PlayWallHit(hitPoint);
+        }
+    }
+
     // Public getters for other scripts if needed
     public bool IsDashing => isDashing;
     public Vector2 FacingDirection => facingVector;
