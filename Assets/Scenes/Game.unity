@@ -3268,6 +3268,22 @@ PrefabInstance:
       propertyPath: dashDuration
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 386500173146005323, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: trailEndWidth
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 386500173146005323, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: trailStartColor.b
+      value: 0.7509433
+      objectReference: {fileID: 0}
+    - target: {fileID: 386500173146005323, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: trailStartColor.g
+      value: 0.7509433
+      objectReference: {fileID: 0}
+    - target: {fileID: 386500173146005323, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: trailStartColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1205198770054730778, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: m_PreviewTimeScale
       value: 1
@@ -3327,6 +3343,18 @@ PrefabInstance:
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: defaultVariants.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: defaultVariants.Array.data[0].sfxClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: defaultVariants.Array.data[1].sfxClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: defaultVariants.Array.data[2].sfxClip
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: defaultVariants.Array.data[1].vfxPrefab
