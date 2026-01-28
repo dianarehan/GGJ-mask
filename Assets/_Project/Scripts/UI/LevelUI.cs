@@ -31,6 +31,9 @@ public class LevelUI : MonoBehaviour
     [SerializeField] private Button retryButton;
     [SerializeField] private ParticleSystem loseParticles;
     [SerializeField] private GameObject maskObjectToHide; // User assigns the specific mask object here
+    [SerializeField] private GameObject loseImage1;       // First image to show
+    [SerializeField] private GameObject loseImage2;       // Second image to show
+    [SerializeField] private float loseSequenceDelay = 2f; // Delay between images
 
     [Header("Audio")]
     [SerializeField] private AudioSource sfxSource;
@@ -79,25 +82,49 @@ public class LevelUI : MonoBehaviour
 
     public void ShowGameOver()
     {
+        if (gameplayPanel != null) gameplayPanel.SetActive(false);
+        
         if (losePanel != null)
         {
             losePanel.SetActive(true);
+            // Hide them initially so we can reveal them sequentially
+            if (loseImage1 != null) loseImage1.SetActive(false);
+            if (loseImage2 != null) loseImage2.SetActive(false);
         }
-        if (gameplayPanel != null)
+
+        if (loseParticles != null) 
         {
-            gameplayPanel.SetActive(false);
-        }
-        if (loseParticles != null)
-        {
+            var main = loseParticles.main;
+            main.useUnscaledTime = true; // Fix: Ensure particles play when time is 0
             loseParticles.Play();
         }
         
-        StartCoroutine(PlaySliceSoundDelayed());
+        StartCoroutine(PlaySliceSoundDelayed()); // Existing audio
+        StartCoroutine(LoseSequenceRoutine());   // New Image Routine
         
         // Hide the specific mask object if assigned
         if (maskObjectToHide != null)
         {
             maskObjectToHide.SetActive(false);
+        }
+    }
+
+    private System.Collections.IEnumerator LoseSequenceRoutine()
+    {
+        // Wait specifically for particle impact usually
+        yield return new WaitForSecondsRealtime(2f);
+
+        if (loseImage1 != null)
+        {
+            loseImage1.SetActive(true);
+            // Optional: Play a sound? 
+        }
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        if (loseImage2 != null)
+        {
+            loseImage2.SetActive(true);
         }
     }
 
