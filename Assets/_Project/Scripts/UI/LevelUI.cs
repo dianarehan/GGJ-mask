@@ -122,6 +122,15 @@ public class LevelUI : MonoBehaviour
     [SerializeField] private float fillDuration = 1.5f;
     [SerializeField] private ParticleSystem fillEffectParticles; // Plays once when filled
 
+    public void InitializeArtifact(int levelIndex, int totalLevels)
+    {
+        if (globalArtifactImage != null)
+        {
+            float fill = (float)levelIndex / totalLevels;
+            globalArtifactImage.fillAmount = fill;
+        }
+    }
+
     public void AnimateArtifactFill(int levelIndex, int totalLevels)
     {
         if (globalArtifactImage != null)

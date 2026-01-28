@@ -147,12 +147,13 @@ public class LevelManager : MonoBehaviour
         levelUI?.HideLevelComplete();
         levelUI?.UpdateLevelText(currentLevelIndex + 1);
         levelUI?.UpdateProgress(0f);
+        levelUI?.InitializeArtifact(currentLevelIndex, levels.Count); // Fix: Set correct initial fill
 
         // Configure Spawner
         spawner.SetLevelData(config.enemyTypes, config.maxActiveEnemies, config.spawnInterval);
         spawner.StartSpawning();
 
-        Debug.Log($"Started Level {currentLevelIndex + 1}: {config.levelName}");
+        Debug.Log($"Started Level {currentLevelIndex + 1}: {config.levelName} (SavedIndex: {savedLevelIndex})");
     }
 
     private void OnEnemyKilled()
