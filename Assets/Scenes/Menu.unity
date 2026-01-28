@@ -1633,7 +1633,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. AWSD to WALK and stear  \n2. Space to Dash"
+  m_text: "1. AWSD to WALK and steer  \n2. Space to Dash"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b077350de51eab841917179e5344d831, type: 2}
   m_sharedMaterial: {fileID: 8937966030533017704, guid: b077350de51eab841917179e5344d831, type: 2}
