@@ -37,6 +37,7 @@ public class LevelUI : MonoBehaviour
     [SerializeField] private AudioSource musicSource; // For BGM / Win Music
     [SerializeField] private AudioClip buttonClickSound;
     [SerializeField] private AudioClip sliceSound; // Played on Game Over
+    [SerializeField] private AudioClip bgMusic;    // Background Music (Play on Start)
     [SerializeField] private AudioClip winMusic;   // Loop or track for Win Scene
 
     [Header("Menus")]
@@ -62,6 +63,15 @@ public class LevelUI : MonoBehaviour
         {
             transitionParticles.Stop();
             transitionParticles.gameObject.SetActive(false);
+        }
+
+        // Play BGM
+        if (musicSource != null && bgMusic != null)
+        {
+            musicSource.clip = bgMusic;
+            musicSource.loop = true;
+            musicSource.Play();
+            musicSource.volume = 0.5f;
         }
     }
 
@@ -105,7 +115,7 @@ public class LevelUI : MonoBehaviour
         if (buttonClickSound != null)
         {
             // Use PlayClipAtPoint to create a temporary source that survives the scene destruction
-            AudioSource.PlayClipAtPoint(buttonClickSound, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(buttonClickSound, Camera.main.transform.position,1f);
         }
 
         // Reload current scene

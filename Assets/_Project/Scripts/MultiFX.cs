@@ -27,8 +27,13 @@ public class MultiFX : MonoBehaviour
     public ShipMovement player;
 
     [Header("Configuration")]
+    [Header("Configuration")]
     [Tooltip("Add different groups for different collision tags here.")]
     public List<TagEffectGroup> effectGroups;
+    
+    [Tooltip("Minimum time between effects to prevent spamming")]
+    public float minTimeBetweenEffects = 0.2f;
+    private float lastEffectTime = -10f;
 
     [Header("Defaults (If no tag matches)")]
     public bool useDefaultEffects = false;
@@ -58,6 +63,10 @@ public class MultiFX : MonoBehaviour
 
     private void HandleImpact(string tag, Vector2 spawnPosition)
     {
+        // Cooldown Check
+        if (Time.time < lastEffectTime + minTimeBetweenEffects) return;
+        lastEffectTime = Time.time;
+
         EffectVariant selectedVariant = null;
 
         // 1. Try to find a group that matches the tag we hit
