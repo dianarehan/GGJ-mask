@@ -179,7 +179,7 @@ public class LevelManager : MonoBehaviour
         isLevelActive = false;
         spawner.StopSpawning();
         spawner.ClearAllEnemies();
-
+        savedLevelIndex = 0;
         Debug.Log($"Level {currentLevelIndex + 1} Complete!");
         
         // Trigger Artifact Fill (fill piece for this level)

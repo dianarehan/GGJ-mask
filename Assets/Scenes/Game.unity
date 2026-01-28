@@ -3345,15 +3345,19 @@ PrefabInstance:
       objectReference: {fileID: 146930250}
     - target: {fileID: 386500173146005323, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: maxSpeed
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 386500173146005323, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: maxHealth
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 386500173146005323, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: turnSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 386500173146005323, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: acceleration
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 386500173146005323, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: dashDuration
