@@ -24024,7 +24024,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 2
-  m_Color: {r: 1, g: 0.35664332, b: 0, a: 1}
+  m_Color: {r: 0.6754716, g: 0.28930575, b: 0.28930575, a: 1}
   m_Intensity: 0
   m_Range: 10
   m_SpotAngle: 30
@@ -24156,7 +24156,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7063787217511755450}
   serializedVersion: 8
-  lengthInSec: 2.5
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 1
@@ -25355,23 +25355,23 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 0.80811393, b: 0, a: 0}
-        key2: {r: 1, g: 0.39275518, b: 0.11764705, a: 0.039215688}
-        key3: {r: 1, g: 0.03424205, b: 0, a: 0.039215688}
+        key0: {r: 0.554717, g: 0, b: 0.0953687, a: 1}
+        key1: {r: 0.554717, g: 0.25014597, b: 0.4455614, a: 1}
+        key2: {r: 0.29803923, g: 0.25490198, b: 0.24313727, a: 0.039215688}
+        key3: {r: 1, g: 1, b: 1, a: 0.039215688}
         key4: {r: 1, g: 0.017601715, b: 0, a: 0.039215688}
         key5: {r: 1, g: 1, b: 1, a: 0.039215688}
         key6: {r: 1, g: 1, b: 1, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 3277
-        ctime1: 13107
-        ctime2: 19661
+        ctime0: 0
+        ctime1: 22128
+        ctime2: 43562
         ctime3: 65535
         ctime4: 45875
         ctime5: 65535
         ctime6: 65535
         ctime7: 0
-        atime0: 39321
+        atime0: 0
         atime1: 65535
         atime2: 65535
         atime3: 65535
@@ -25380,7 +25380,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_ColorSpace: -1
+        m_ColorSpace: 0
         m_NumColorKeys: 4
         m_NumAlphaKeys: 2
       minGradient:
