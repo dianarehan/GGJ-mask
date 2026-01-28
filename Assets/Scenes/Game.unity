@@ -364,7 +364,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2470190234937092936, guid: 938abd15b01abb54499722eac25e4022, type: 3}
   m_PrefabInstance: {fileID: 146930249}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 346201155}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d87b266556c54241a36fe8cadffed94, type: 3}
@@ -473,6 +473,11 @@ MonoBehaviour:
   magnitude: 0.1
   useUnscaledTime: 1
   randomizeStart: 0
+--- !u!1 &346201155 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7112964022297436753, guid: 938abd15b01abb54499722eac25e4022, type: 3}
+  m_PrefabInstance: {fileID: 146930249}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &377093614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,7 +1093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5642766282230003982, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7660836441076557302, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c, type: 3}
       propertyPath: useUnscaledTime
@@ -1212,6 +1217,10 @@ PrefabInstance:
     - target: {fileID: 4364354964670000192, guid: 3801a320e9ae1bf44a14efa194c86c3f, type: 3}
       propertyPath: m_Name
       value: CFXR3 Ambient Glows
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364354964670000192, guid: 3801a320e9ae1bf44a14efa194c86c3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4364354964670000254, guid: 3801a320e9ae1bf44a14efa194c86c3f, type: 3}
       propertyPath: m_Materials.Array.size
@@ -2288,7 +2297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You Umasked the unknown
+  m_text: You Umasked your identity
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b077350de51eab841917179e5344d831, type: 2}
   m_sharedMaterial: {fileID: 8937966030533017704, guid: b077350de51eab841917179e5344d831, type: 2}
@@ -2824,35 +2833,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: defaultVariants.Array.data[0].vfxLifetime
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: defaultVariants.Array.data[1].vfxLifetime
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: defaultVariants.Array.data[2].vfxLifetime
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: defaultVariants.Array.data[3].vfxLifetime
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: defaultVariants.Array.data[4].vfxLifetime
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: defaultVariants.Array.data[5].vfxLifetime
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: effectGroups.Array.data[0].variants.Array.data[0].vfxLifetime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
+      propertyPath: effectGroups.Array.data[0].variants.Array.data[1].vfxLifetime
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: effectGroups.Array.data[0].variants.Array.data[2].vfxLifetime
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8841496512077625556, guid: 5d31473ccdd92084583ce7f29affb8a9, type: 3}
       propertyPath: effectGroups.Array.data[0].variants.Array.data[3].vfxLifetime
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5842,6 +5859,10 @@ PrefabInstance:
       propertyPath: buttonClickSound
       value: 
       objectReference: {fileID: 8300000, guid: 2eec829ecaa7a3a4c8e8d064ab9ace9b, type: 3}
+    - target: {fileID: 3314499023943736784, guid: f5e86485fd484374b91ee3b85061514d, type: 3}
+      propertyPath: maskObjectToHide
+      value: 
+      objectReference: {fileID: 346201155}
     - target: {fileID: 3314499023943736784, guid: f5e86485fd484374b91ee3b85061514d, type: 3}
       propertyPath: artifactGlowImage
       value: 

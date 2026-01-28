@@ -30,6 +30,7 @@ public class LevelUI : MonoBehaviour
     [Header("Game Over / Lose")]
     [SerializeField] private Button retryButton;
     [SerializeField] private ParticleSystem loseParticles;
+    [SerializeField] private GameObject maskObjectToHide; // User assigns the specific mask object here
 
     [Header("Audio")]
     [SerializeField] private AudioSource sfxSource;
@@ -82,6 +83,12 @@ public class LevelUI : MonoBehaviour
         }
         
         StartCoroutine(PlaySliceSoundDelayed());
+        
+        // Hide the specific mask object if assigned
+        if (maskObjectToHide != null)
+        {
+            maskObjectToHide.SetActive(false);
+        }
     }
 
     private System.Collections.IEnumerator PlaySliceSoundDelayed()
@@ -206,6 +213,10 @@ public class LevelUI : MonoBehaviour
         if (winPanel != null)
         {
             winPanel.SetActive(true);
+            if (maskObjectToHide != null)
+        {
+            maskObjectToHide.SetActive(false);
+        }
             StartCoroutine(PlayWinSequence());
         }
         if (levelCompletePanel != null)
