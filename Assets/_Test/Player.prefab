@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2771894851063314038}
   - component: {fileID: 1205198770054730778}
   - component: {fileID: 8841496512077625556}
+  - component: {fileID: 434798826116684123}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -107,7 +108,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3944599640377770395}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -177,14 +178,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpaceshipController
   currentState: 0
-  acceleration: 1.46
-  maxSpeed: 2.04
+  acceleration: 5
+  maxSpeed: 4
   turnSpeed: 400
   deceleration: 10
   driftFactor: 0.95
   mask: {fileID: 0}
   dashForce: 20
-  dashDuration: 2.5
+  dashDuration: 2
   dashCooldown: 2
   minDashSpeed: 15
   normalMat: {fileID: 6200000, guid: 945b88d2b74cfc04fa27be9ff672c811, type: 2}
@@ -192,8 +193,8 @@ MonoBehaviour:
   useTrail: 1
   trailTime: 0.3
   trailStartWidth: 0.3
-  trailEndWidth: 0
-  trailStartColor: {r: 0, g: 1, b: 1, a: 1}
+  trailEndWidth: 0.1
+  trailStartColor: {r: 0, g: 0.7509433, b: 0.7509433, a: 1}
   trailEndColor: {r: 0, g: 1, b: 1, a: 0}
   dashSound: {fileID: 8300000, guid: 0b38eaf62937b164e8b1347ea67623a6, type: 3}
   dashVolume: 1
@@ -440,33 +441,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bac07da6fb90b438673dfd200991f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MultiFX
+  player: {fileID: 0}
   effectGroups:
   - tagToDetect: Enemy
     variants:
-    - name: Boing
-      vfxPrefab: {fileID: 8646951538455718151, guid: b983c79e4e36d3a4387fa594d0496b23, type: 3}
-      sfxClip: {fileID: 0}
-      volume: 1
-      destroyVfxAfterTime: 1
-      vfxLifetime: 5
     - name: Boom
       vfxPrefab: {fileID: 5789409945369206418, guid: fc480501980e7064abe423881280fc76, type: 3}
       sfxClip: {fileID: 0}
       volume: 1
       destroyVfxAfterTime: 1
-      vfxLifetime: 5
+      vfxLifetime: 1
     - name: GGJ
       vfxPrefab: {fileID: 8646951538455718151, guid: 06c6105312f633a44951fceccea84c90, type: 3}
       sfxClip: {fileID: 0}
       volume: 1
       destroyVfxAfterTime: 1
-      vfxLifetime: 5
+      vfxLifetime: 1.5
     - name: Pow
       vfxPrefab: {fileID: 9052769377778856701, guid: 5fe8c6d43e87ebb4e91035a53d951029, type: 3}
       sfxClip: {fileID: 0}
       volume: 1
       destroyVfxAfterTime: 1
-      vfxLifetime: 5
+      vfxLifetime: 1
+  minTimeBetweenEffects: 0.2
   useDefaultEffects: 1
   defaultVariants:
   - name: 
@@ -474,37 +471,72 @@ MonoBehaviour:
     sfxClip: {fileID: 0}
     volume: 1
     destroyVfxAfterTime: 1
-    vfxLifetime: 5
-  - name: 
-    vfxPrefab: {fileID: 5272686304646001713, guid: c9fcf9d34274598488791623d9799868, type: 3}
-    sfxClip: {fileID: 0}
-    volume: 1
-    destroyVfxAfterTime: 1
-    vfxLifetime: 5
-  - name: 
-    vfxPrefab: {fileID: 7110350694466063256, guid: 4eeb792b72984f845925f609803db6ab, type: 3}
-    sfxClip: {fileID: 0}
-    volume: 1
-    destroyVfxAfterTime: 1
-    vfxLifetime: 5
+    vfxLifetime: 1
   - name: 
     vfxPrefab: {fileID: 2577194370618353577, guid: c65aa97a7a7f96d498859e17dc5a2f45, type: 3}
     sfxClip: {fileID: 0}
     volume: 1
     destroyVfxAfterTime: 1
-    vfxLifetime: 5
-  - name: 
-    vfxPrefab: {fileID: 5963995882999752727, guid: 3ee39c1ef5e3b4141a7381c341eca5f6, type: 3}
-    sfxClip: {fileID: 0}
-    volume: 1
-    destroyVfxAfterTime: 1
-    vfxLifetime: 5
+    vfxLifetime: 1
   - name: 
     vfxPrefab: {fileID: 9167551897834583671, guid: 258bc248f039dd442b6db5482e71763d, type: 3}
     sfxClip: {fileID: 0}
     volume: 1
     destroyVfxAfterTime: 1
-    vfxLifetime: 5
+    vfxLifetime: 1
+--- !u!60 &434798826116684123
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3944599640377770395}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.25}
+    oldSize: {x: 0.46, y: 0.51}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.04, y: 0.36249998}
+      - {x: -0.22999999, y: 0.2825}
+      - {x: -0.22999999, y: -0.1275}
+      - {x: 0.22999999, y: -0.1275}
+      - {x: 0.22999999, y: 0.1725}
+      - {x: 0.11, y: 0.36249998}
+  m_UseDelaunayMesh: 0
 --- !u!1 &5172624829531056937
 GameObject:
   m_ObjectHideFlags: 0
